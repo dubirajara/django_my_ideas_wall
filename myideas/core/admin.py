@@ -4,7 +4,6 @@ from .models import Ideas
 
 
 class IdeasAdmin(admin.ModelAdmin):
-    # prepopulated_fields = {'slug': ('title',)}
     list_display = ('user', 'title', 'likes', 'created_at', 'tags')
     list_display_links = ('title',)
     exclude = ('likes',)
