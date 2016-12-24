@@ -8,5 +8,4 @@
 *.pyc
 __pycache__
 _pgbackup
-migrations
 staticsfiles
