@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Ideas Form Edit{% endblock title %}
+
+{% block content %}
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-3' style="padding-top:80px">
+    {% if user.is_authenticated %}
+<h1>Share your idea!</h1>
+
+<form method='post' enctype="multipart/form-data" action="{% url 'ideas_form' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+
+  <input class='btn btn-block btn-primary' type="submit" value="Share" />
+</form>
+    {% else %}
+
+        <p align="center" class='text-align-center lead' style="padding-top:80px">To share your idea you have to be logged in.</p>
+        <p class='text-align-center' align="center"><a href="{% url 'auth_login' %}"><b>Login</b></a></p>
+
+    {% endif %}
+</div>
+</div>
+{{ form.media }}
+
+{% endblock %}

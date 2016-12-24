@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}403. Bad Request{% endblock title %}
+
+{% block content %}
+<p align="center" class='text-align-center lead' style="padding-top:100px">Bad request, cannot process the request.</p><p class='text-align-center lead' align="center"><a href="{% url 'home' %}">Go Back!</a></p></p>
+{% endblock %}

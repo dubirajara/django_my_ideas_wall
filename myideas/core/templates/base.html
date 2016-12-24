@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+    <title>{% block title %} {% endblock title %}</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="{% static 'fonts/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tether.min.css' %}">
+
+</head>
+<body>
+
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <a class="navbar-brand" href="{% url 'ideas_form' %}">Share To Make Ideas Happen!</a>
+    <button class="hidden-sm-up navbar-toggler pull-xs-right" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
+      ☰
+    </button>
+    <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+
+      <ul class="nav navbar-nav pull-sm-right">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+
+       {% if user.is_authenticated %}
+              <li class="nav-item">
+          <p class="nav-link navbar-nav"><a href="{% url 'profile' user.username %}"> {{ user.username }}</a></p>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link navbar-nav" href="{% url 'auth_logout' %}">Logout</a>
+              </li>
+          {% else %}
+        <li class="nav-item">
+          <a class="nav-link navbar-nav" href="{% url 'auth_login' %}">Log-In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-nav" href="{% url 'registration_register' %}">Register</a>
+
+          {% endif %}
+      </ul>
+
+    </div>
+
+  </nav>
+            {% block content %}
+            {% endblock %}
+
+              
+ <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery.viewportchecker.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://npmcdn.com/tether@1.4.0/dist/js/tether.min.js"></script>
+  <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
+
+
+  <input name="animation" type="hidden">
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}404. Not Found{% endblock title %}
+
+{% block content %}
+<p align="center" class='text-align-center lead' style="padding-top:100px">Sorry, web page not found.</p><p class='text-align-center lead' align="center"><a href="{% url 'home' %}">Go Back!</a></p></p>
+{% endblock %}

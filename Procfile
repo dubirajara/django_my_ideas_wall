@@ -1,0 +1,1 @@
+ web: gunicorn myideas.wsgi --log-file -

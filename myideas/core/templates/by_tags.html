@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Tags{% endblock title %}
+
+{% block content %}
+
+<section class="mbr-cards mbr-section mbr-section-nopadding" id="features1-12" style="background-color: rgba(239, 239, 239, 0.28);">
+
+        
+    <div class="mbr-cards-row row striped">
+
+        {% for idea in queryset %}
+
+        <div class="mbr-cards-col col-xs-12 col-lg-3" style="padding-top: 100px; padding-bottom: 30px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-block">
+                        <h4 class="card-title">{{ idea.title }}</h4>
+                        <h5 class="card-subtitle">By:<a href="{% url 'profile' idea.user.username %}">  {{ idea.user.username }}</a></h5>
+                        <p class="card-text">{{ idea.description|truncatewords:"20" }}</p>
+                        <br><br><div class="card-btn"><a href="{{ idea.get_absolute_url }}" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          {% if forloop.counter|divisibleby:5 and not forloop.last %}
+        </div><br><div class="mbr-cards-row row striped">
+      {% endif %}
+    {% endfor %}
+    </div>
+</section>
+{% endblock %}

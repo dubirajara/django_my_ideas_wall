@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <br><div class="mbr-cards-row row striped">
+
+
+
+        <div class="mbr-cards-col col-xs-12 col-lg-3" style="padding-top: 110px; padding-bottom: 50px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-block">
+                        {% if request.user == ideas.user %}
+                        <p align="right">
+                             <a class="btn btn-default btn-sm" href="{% url 'update' ideas.slug %}">
+                        <i class="fa fa-pencil fa-lg"></i>Edit</a>
+                        <a class="btn btn-default btn-sm" href="{% url 'delete' ideas.slug %}">
+                            <i class="fa fa-trash-o fa-lg"></i>Delete</a></p>
+                        {% endif %}
+                        <h4 class="card-title" style="text-align: center;">{{ ideas.title }}</h4>
+                        <h6 style="text-align: center;"><small class="text-muted">By: {{ ideas.user.username }}</small></h6><br>
+                        <p class="card-text text-justify">{{ ideas.description }}</p><br>
+                        <div style="text-align: center;">
+                        <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                        <div><a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ ideas.title }}" data-lang="en" data-show-count=“true”>Tweet</a></div>
+                    </div>
+                    <div style="text-align: center;">
+
+                    {% if ideas.tags %}<br>
+                        {% for tag in ideas.tags.all %}
+                        <a class="textag post-tag card-text" href="{% url 'by_tags' tag %}"> {{ tag }}</a>
+                    {% endfor %}
+                    {% endif %}
+                    </div>
+
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=142940679526184";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+{% endblock %}

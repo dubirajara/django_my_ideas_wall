@@ -1,0 +1,12 @@
+.DS_Store
+.bash_profile
+.bash_profile.swp
+.env
+.idea
+.venv
+*.sqlite3
+*.pyc
+__pycache__
+_pgbackup
+migrations
+staticsfiles

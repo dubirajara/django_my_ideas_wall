@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}500. Internal Server Error {% endblock title %}
+
+{% block content %}
+<p align="center" class='text-align-center lead' style="padding-top:100px">Ooops!!! Looks like something went wrong! In the meantime, try refreshing.</p><p class='text-align-center lead' align="center"><a href="{% url 'home' %}">Go Back!</a></p></p>
+{% endblock %}
