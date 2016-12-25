@@ -40,9 +40,9 @@ def main():
 
     # initialise empty here. Otherwise: forkbomb through the git calls.
     subst_list = {
-        "version": "0.1",
-        "date": "24-12-2016",
-        "author": "Diego Ubirajara",
+        "version": "",
+        "date": "",
+        "author": "",
         "email": ""
     }
 
