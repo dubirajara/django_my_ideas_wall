@@ -21,7 +21,7 @@
                             <i class="fa fa-trash-o fa-lg"></i>Delete</a></p>
                         {% endif %}
                         <h4 class="card-title" style="text-align: center;">{{ ideas.title }}</h4>
-                        <h6 style="text-align: center;"><small class="text-muted">By: {{ ideas.user.username }}</small></h6><br>
+                        <h6 class="card-subtitle" style="text-align: center;"><small class="text-muted">By: <a href="{% url 'profile' ideas.user.username %}">{{ ideas.user.username }}</a></small></h6><br>
                         <p class="card-text text-justify">{{ ideas.description }}</p><br>
                         <div style="text-align: center;">
                         <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>

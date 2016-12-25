@@ -8,9 +8,9 @@ from django.utils.crypto import get_random_string
 
 class Ideas(models.Model):
     user = models.ForeignKey(User)
-    title = models.CharField(max_length=50)
-    description = models.TextField(max_length=255)
-    slug = models.SlugField(max_length=50, blank=True, null=True)
+    title = models.CharField(max_length=60)
+    description = models.TextField()
+    slug = models.SlugField(max_length=60, blank=True, null=True)
     likes = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = tagulous.models.TagField(
@@ -23,7 +23,7 @@ class Ideas(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title + str(self.user_id) + get_random_string(length=15))
+        self.slug = slugify(self.title + str(self.user_id) + get_random_string(length=10))
         super(Ideas, self).save(*args, **kwargs)
 
     class Meta:
