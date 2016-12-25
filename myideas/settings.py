@@ -136,6 +136,7 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 SENDGRID_USERNAME = config('SENDGRID_USERNAME')
 SENDGRID_PASSWORD = config('SENDGRID_PASSWORD')
+SENDGRID_API_KEY = config('SENDGRID_API_KEY')
 
 # Tagulous configuration
 
