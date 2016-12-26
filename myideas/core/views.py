@@ -48,17 +48,14 @@ def idea_create(request):
 
 def update(request, slug=None):
     instance = get_object_or_404(Ideas, slug=slug)
-    form = IdeasFormUpdate(request.POST or None, request.FILES or None, instance=instance)
+    form = IdeasFormUpdate(request.POST or None, instance=instance)
     if request.user == instance.user:
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.user = request.user
             instance.save()
-            instance.save_m2m()
             return HttpResponseRedirect(instance.get_absolute_url())
 
         context = {
-            "title": instance.title,
             "instance": instance,
             'form': form,
         }
