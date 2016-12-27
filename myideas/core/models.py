@@ -11,7 +11,6 @@ class Ideas(models.Model):
     title = models.CharField(max_length=60)
     description = models.TextField()
     slug = models.SlugField(max_length=60, blank=True, null=True)
-    likes = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = tagulous.models.TagField(
         blank=True,

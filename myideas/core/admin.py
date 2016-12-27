@@ -4,9 +4,8 @@ from .models import Ideas
 
 
 class IdeasAdmin(admin.ModelAdmin):
-    list_display = ('user', 'title', 'likes', 'created_at', 'tags')
+    list_display = ('user', 'title', 'created_at', 'tags')
     list_display_links = ('title',)
-    exclude = ('likes',)
     model = Ideas
 
 

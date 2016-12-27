@@ -51,12 +51,10 @@ def update(request, slug=None):
     form = IdeasFormUpdate(request.POST or None, instance=instance)
     if request.user == instance.user:
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.save()
+            form.save()
             return HttpResponseRedirect(instance.get_absolute_url())
 
         context = {
-            "instance": instance,
             'form': form,
         }
     else:
