@@ -23,8 +23,8 @@ from myideas.core import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
-    url(r'^ideas/(?P<slug>[\w-]+)/$', views.ideas_details, name='ideas_details'),
-    url(r'^ideas/(?P<slug>[\w-]+)/update/$', views.update, name='update'),
+    url(r'^ideas/(?P<slug>[\w-]+)/$', views.idea_details, name='idea_details'),
+    url(r'^update/(?P<slug>[\w-]+)/$', views.idea_update, name='update'),
     url(r'^(?P<slug>[\w-]+)/delete/$', views.idea_delete, name='delete'),
     url(r'^profile/(\w+)/$', views.profile, name='profile'),
     url(r'^by_tags/(?P<tags>[\w-]+)/$', views.by_tags, name='by_tags'),

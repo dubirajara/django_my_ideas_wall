@@ -4,9 +4,9 @@
 
 {% block content %}
 <div class='row'>
-<div class='col-sm-6 col-sm-offset-3' style="padding-top:80px">
+<div class='col-sm-6 col-sm-offset-3' style="padding-top:100px">
     {% if user.is_authenticated %}
-<h1>Share your idea!</h1>
+<h3 style="text-align: center;">Edit your idea!</h3><br>
 
 <form method='post' enctype="multipart/form-data" action="{% url 'ideas_form' %}">
   {% csrf_token %}

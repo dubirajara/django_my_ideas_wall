@@ -10,7 +10,7 @@ class Ideas(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(max_length=60)
     description = models.TextField()
-    slug = models.SlugField(max_length=60, blank=True, null=True)
+    slug = models.SlugField(max_length=60, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = tagulous.models.TagField(
         blank=True,
@@ -33,4 +33,4 @@ class Ideas(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return r('ideas_details', slug=self.slug)
+        return r('idea_details', slug=self.slug)

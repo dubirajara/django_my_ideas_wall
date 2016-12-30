@@ -16,7 +16,7 @@ def home(request):
     return render(request, 'index.html', context)
 
 
-def ideas_details(request, slug):
+def idea_details(request, slug):
     ideas = get_object_or_404(Ideas, slug=slug)
 
     context = {
@@ -46,7 +46,7 @@ def idea_create(request):
     return render(request, 'idea_form.html', context)
 
 
-def update(request, slug=None):
+def idea_update(request, slug=None):
     instance = get_object_or_404(Ideas, slug=slug)
     form = IdeasFormUpdate(request.POST or None, instance=instance)
     if request.user == instance.user:
@@ -60,7 +60,7 @@ def update(request, slug=None):
     else:
         raise PermissionDenied
 
-    return render(request, 'idea_form.html', context)
+    return render(request, 'update.html', context)
 
 # class IdeaUpdateView(UpdateView):
 #     model = Ideas
