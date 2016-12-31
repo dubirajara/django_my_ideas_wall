@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load i18n %}
 {% load crispy_forms_tags %}
 
 {% block title %}Login{% endblock title %}
@@ -23,7 +22,7 @@
   {% csrf_token %}
   {{ form|crispy }}
 
-  <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Submit' %}" />
+  <input class='btn btn-block btn-primary' type="submit" value='Submit' />
   <input type="hidden" name="next" value="{{ next }}" />
 </form>
 </div>
@@ -32,8 +31,8 @@
 <hr/>
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-3 text-align-center'>
-<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
-<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+<p>Forgot password? <a href="{% url 'auth_password_reset' %}">Reset it</a>!</p>
+<p>Not member? <a href="{% url 'registration_register' %}">Register</a>!</p>
 </div>
 </div>
 {% endblock %}

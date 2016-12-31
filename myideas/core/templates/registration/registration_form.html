@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load i18n %}
 {% load crispy_forms_tags %}
 
 {% block title %}Registration Form{% endblock title %}
@@ -24,7 +23,7 @@
   {% csrf_token %}
   {{ form|crispy }}
 
-  <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Join' %}" />
+  <input class='btn btn-block btn-primary' type="submit" value="Join" />
 </form>
 </div>
 </div>
