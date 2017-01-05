@@ -42,7 +42,7 @@ class DetailsTest(TestCase):
         url = r('idea_details', slug=self.idea.slug)
         self.assertEqual(url, self.idea.get_absolute_url())
 
-    def test_get_details(self):
+    def test_get(self):
         """GET 'Ideas Details' must return status code 200"""
         self.assertEqual(200, self.response.status_code)
 
