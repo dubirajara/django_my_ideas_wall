@@ -6,7 +6,7 @@ from .models import Ideas
 
 class HomeTest(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create(username='some_user')
+        self.user = get_user_model().objects.create(username='adminapp')
         self.response = self.client.get(r('home'))
 
     def test_get(self):
@@ -32,7 +32,17 @@ class HomeTest(TestCase):
         expected = 'href="{}"'.format(r('ideas_form'))
         self.assertContains(self.response, expected)
 
+
+class DetailsTest(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create(username='adminapp')
+        self.entry = Ideas.objects.create(user=self.user, title='test app')
+        self.response = self.client.get(r(self.entry.get_absolute_url()))
+
     def test_get_absolute_url(self):
-        entry = Ideas.objects.create(user=self.user, title='test app')
-        url = r('idea_details', slug=entry.slug)
-        self.assertEqual(url, entry.get_absolute_url())
+        url = r('idea_details', slug=self.entry.slug)
+        self.assertEqual(url, self.entry.get_absolute_url())
+
+    def test_get_details(self):
+        """GET 'Ideas Details' must return status code 200"""
+        self.assertEqual(200, self.response.status_code)
