@@ -13,21 +13,22 @@ class HomeTest(TestCase):
         self.assertEqual(200, self.response.status_code)
 
     def test_template(self):
-        """'Home' must use template index.html"""
+        """'Home' must use template index.html and base.html"""
         self.assertTemplateUsed(self.response, 'index.html')
+        self.assertTemplateUsed(self.response, 'base.html')
 
     def test_login_link(self):
-        """'Home' must contains link to login page"""
+        """base.html navbar must contains link to login page"""
         expected = 'href="{}"'.format(r('auth_login'))
         self.assertContains(self.response, expected)
 
     def test_register_link(self):
-        """'Home' must contains link to register page"""
+        """base.html navbar must contains link to register page"""
         expected = 'href="{}"'.format(r('registration_register'))
         self.assertContains(self.response, expected)
 
     def test_ideas_form_link(self):
-        """'Home' must contains link to register page"""
+        """base.html navbar contains link to register page"""
         expected = 'href="{}"'.format(r('ideas_form'))
         self.assertContains(self.response, expected)
 
@@ -47,20 +48,8 @@ class DetailsTest(TestCase):
         self.assertEqual(url, self.idea.get_absolute_url())
 
     def test_template(self):
-        """'Ideas Details' must use template ideas_details.html"""
+        """'Ideas Details' must use template ideas_details.html and base.html"""
         self.assertTemplateUsed(self.response, 'ideas_details.html')
+        self.assertTemplateUsed(self.response, 'base.html')
 
-    def test_login_link(self):
-        """'Home' must contains link to login page"""
-        expected = 'href="{}"'.format(r('auth_login'))
-        self.assertContains(self.response, expected)
 
-    def test_register_link(self):
-        """'Home' must contains link to register page"""
-        expected = 'href="{}"'.format(r('registration_register'))
-        self.assertContains(self.response, expected)
-
-    def test_ideas_form_link(self):
-        """'Home' must contains link to register page"""
-        expected = 'href="{}"'.format(r('ideas_form'))
-        self.assertContains(self.response, expected)
