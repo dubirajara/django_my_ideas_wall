@@ -18,17 +18,17 @@ class HomeTest(TestCase):
         self.assertTemplateUsed(self.response, 'base.html')
 
     def test_login_link(self):
-        """base.html navbar must contains link to login page"""
+        """base.html navbar must contains login page link"""
         expected = 'href="{}"'.format(r('auth_login'))
         self.assertContains(self.response, expected)
 
     def test_register_link(self):
-        """base.html navbar must contains link to register page"""
+        """base.html navbar must contains register page link"""
         expected = 'href="{}"'.format(r('registration_register'))
         self.assertContains(self.response, expected)
 
     def test_ideas_form_link(self):
-        """base.html navbar contains link to register page"""
+        """base.html navbar contains ideas_form link"""
         expected = 'href="{}"'.format(r('ideas_form'))
         self.assertContains(self.response, expected)
 
