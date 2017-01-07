@@ -62,12 +62,6 @@ def idea_update(request, slug=None):
 
     return render(request, 'update.html', context)
 
-# class IdeaUpdateView(UpdateView):
-#     model = Ideas
-#     # fields = ["title", "description"]
-#     form_class = IdeasFormUpdate
-#     template_name = "update.html"
-
 
 def idea_delete(request, slug=None):
     instance = get_object_or_404(Ideas, slug=slug)

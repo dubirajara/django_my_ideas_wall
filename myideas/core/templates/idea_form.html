@@ -7,7 +7,7 @@
     {% if user.is_authenticated %}
 <h3 style="text-align: center;">Share your idea!</h3><br>
 
-<form method='post' action="{% url 'ideas_form' %}">
+<form method='post' action="">
   {% csrf_token %}
   {{ form|crispy }}
 
