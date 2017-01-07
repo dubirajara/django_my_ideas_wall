@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from myideas.core import views
-#from myideas.core.views import IdeaUpdateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -31,7 +30,6 @@ urlpatterns = [
     url(r'^ideas_form/', views.idea_create, name='ideas_form'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^oauth/', include('social.apps.django_app.urls', namespace='social')),
-    #url(r'^ideas/(?P<slug>[-\w]+)/update/$', IdeaUpdateView.as_view(), name='update'),
 
 
 ]
