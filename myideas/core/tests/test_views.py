@@ -53,3 +53,17 @@ class DetailsTest(TestCase):
         self.assertTemplateUsed(self.response, 'base.html')
 
 
+class ProfileTest(TestCase):
+    def setUp(self):
+        user = get_user_model().objects.create(username='adminapp')
+        self.idea = Ideas.objects.create(user=user)
+        self.response = self.client.get(r('profile', self.idea.user))
+
+    def test_get(self):
+        """GET 'User Profile' must return status code 200"""
+        self.assertEqual(200, self.response.status_code)
+
+    def test_template(self):
+        """'User Profile' must use template profile.html and base.html"""
+        self.assertTemplateUsed(self.response, 'profile.html')
+        self.assertTemplateUsed(self.response, 'base.html')
