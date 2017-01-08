@@ -8,7 +8,32 @@ Demo: http://shareideas.herokuapp.com
 [![Updates](https://pyup.io/repos/github/dubirajara/django_my_ideas_wall/shield.svg)](https://pyup.io/repos/github/dubirajara/django_my_ideas_wall/)
 
 
+##
 
+- Clone the repository:
 
+```sh
+git clone https://github.com/dubirajara/django_my_ideas_wall.git myideasapp
+cd myideasapp
+```
 
+- Create and activate virtualenv with Python 3.5:
 
+```sh
+virtualenv .venv
+source .venv/bin/activate 
+```
+
+- Install the dependencies:
+```sh
+pip install -r requirements.txt
+```
+- Set up your local configuration file .env:
+```sh
+cp contrib/env-sample myideas/.env
+```
+- Run the migrations and run tests:
+```sh
+python manage.py migrate
+python manage.py test
+```
