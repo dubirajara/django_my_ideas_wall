@@ -30,11 +30,6 @@ urlpatterns = [
     url(r'^ideas_form/', views.idea_create, name='ideas_form'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-
-
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = 'Ideas Webapp Admin'
