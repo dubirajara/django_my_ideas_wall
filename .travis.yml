@@ -7,6 +7,6 @@ install:
 script:
   - coverage run --source='myideas' manage.py test
 before_install:
-  - pip install codecov
+  - pip install coveralls
 after_success:
-  - codecov
+  - coveralls
