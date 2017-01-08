@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^by_tags/(?P<tags>[\w-]+)/$', views.by_tags, name='by_tags'),
     url(r'^ideas_form/', views.idea_create, name='ideas_form'),
     url(r'^accounts/', include('registration.backends.default.urls')),
-    url(r'^oauth/', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
 
 
 ]
