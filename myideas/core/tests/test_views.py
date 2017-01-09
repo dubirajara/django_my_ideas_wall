@@ -67,3 +67,17 @@ class ProfileTest(TestCase):
         """'User Profile' must use template profile.html and base.html"""
         self.assertTemplateUsed(self.response, 'profile.html')
         self.assertTemplateUsed(self.response, 'base.html')
+
+
+class IdeaFormTest(TestCase):
+    def setUp(self):
+        self.response = self.client.get(r('ideas_form'))
+
+    def test_get(self):
+        """GET 'Home' must return status code 200"""
+        self.assertEqual(200, self.response.status_code)
+
+    def test_template(self):
+        """'Home' must use template index.html and base.html"""
+        self.assertTemplateUsed(self.response, 'idea_form.html')
+        self.assertTemplateUsed(self.response, 'base.html')
