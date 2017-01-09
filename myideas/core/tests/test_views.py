@@ -74,10 +74,10 @@ class IdeaFormTest(TestCase):
         self.response = self.client.get(r('ideas_form'))
 
     def test_get(self):
-        """GET 'Home' must return status code 200"""
+        """GET 'Ideas Form' must return status code 200"""
         self.assertEqual(200, self.response.status_code)
 
     def test_template(self):
-        """'Home' must use template index.html and base.html"""
+        """'Ideas Form' must use template index.html and base.html"""
         self.assertTemplateUsed(self.response, 'idea_form.html')
         self.assertTemplateUsed(self.response, 'base.html')
