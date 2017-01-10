@@ -81,3 +81,4 @@ class IdeaFormTest(TestCase):
         """'Ideas Form' must use template index.html and base.html"""
         self.assertTemplateUsed(self.response, 'idea_form.html')
         self.assertTemplateUsed(self.response, 'base.html')
+
