@@ -21,3 +21,10 @@ class IdeasModelTest(TestCase):
     def test_get_absolute_url(self):
         url = r('idea_details', slug=self.idea.slug)
         self.assertEqual(url, self.idea.get_absolute_url())
+
+    def test_tags_can_be_blank(self):
+        field = Ideas._meta.get_field('tags')
+        self.assertTrue(field.blank)
+
+    def test_str(self):
+        self.assertEqual('django app', str(self.idea))
