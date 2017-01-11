@@ -43,10 +43,6 @@ class DetailsTest(TestCase):
         """GET 'Ideas Details' must return status code 200"""
         self.assertEqual(200, self.response.status_code)
 
-    def test_get_absolute_url(self):
-        url = r('idea_details', slug=self.idea.slug)
-        self.assertEqual(url, self.idea.get_absolute_url())
-
     def test_template(self):
         """'Ideas Details' must use template ideas_details.html and base.html"""
         self.assertTemplateUsed(self.response, 'ideas_details.html')
