@@ -16,6 +16,7 @@ class IdeasModelTest(TestCase):
         )
 
     def test_create(self):
+        """Check models data create"""
         self.assertTrue(Ideas.objects.exists())
 
     def test_get_absolute_url(self):
