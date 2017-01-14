@@ -5,6 +5,7 @@ from myideas.core.models import Ideas
 
 
 class HomeTest(TestCase):
+
     def setUp(self):
         self.response = self.client.get(r('home'))
 
@@ -34,6 +35,7 @@ class HomeTest(TestCase):
 
 
 class DetailsTest(TestCase):
+
     def setUp(self):
         user = get_user_model().objects.create(username='adminapp')
         self.idea = Ideas.objects.create(user=user, title='test app')
@@ -50,6 +52,7 @@ class DetailsTest(TestCase):
 
 
 class ProfileTest(TestCase):
+
     def setUp(self):
         user = get_user_model().objects.create(username='adminapp')
         self.idea = Ideas.objects.create(user=user)
@@ -66,6 +69,7 @@ class ProfileTest(TestCase):
 
 
 class IdeaFormTest(TestCase):
+
     def setUp(self):
         self.response = self.client.get(r('ideas_form'))
 
@@ -78,3 +82,9 @@ class IdeaFormTest(TestCase):
         self.assertTemplateUsed(self.response, 'idea_form.html')
         self.assertTemplateUsed(self.response, 'base.html')
 
+
+class SpeakerDetailNotFound(TestCase):
+
+    def test_not_found(self):
+        response = self.client.get(r('ideas_details.html', slug='not-found'))
+        self.assertEqual(404, response.status_code)

@@ -5,6 +5,7 @@ from myideas.core.models import Ideas
 
 
 class IdeasModelTest(TestCase):
+
     def setUp(self):
         user = get_user_model().objects.create(username='adminapp')
         self.idea = Ideas.objects.create(
