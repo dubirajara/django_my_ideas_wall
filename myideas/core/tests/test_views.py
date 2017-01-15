@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 from django.contrib.auth import get_user_model
-
 from myideas.core.forms import IdeasForm
 from myideas.core.models import Ideas
 
