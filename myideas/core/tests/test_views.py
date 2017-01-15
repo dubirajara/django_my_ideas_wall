@@ -88,8 +88,15 @@ class IdeaFormTest(TestCase):
         self.assertTemplateUsed(self.response, 'base.html')
 
 
-class SpeakerDetailNotFound(TestCase):
+class IdeasDetailNotFound(TestCase):
+
+    def setUp(self):
+        self.response = self.client.get(r('ideas_details.html', slug='not-found'))
 
     def test_not_found(self):
-        response = self.client.get(r('ideas_details.html', slug='not-found'))
-        self.assertEqual(404, response.status_code)
+        self.assertEqual(404, self.response.status_code)
+
+    def test_template(self):
+        """'page not found' must use template 404.html and base.html"""
+        self.assertTemplateUsed(self.response, '404.html')
+        self.assertTemplateUsed(self.response, 'base.html')
