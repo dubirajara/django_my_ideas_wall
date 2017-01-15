@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 from django.contrib.auth import get_user_model
+from django.utils.text import slugify
 from myideas.core.models import Ideas
 
 
@@ -12,7 +13,7 @@ class IdeasModelTest(TestCase):
                 user=user,
                 title='django app',
                 description='test django web app',
-                slug='django-app',
+                slug=slugify('django app'),
                 tags='django'
         )
 
