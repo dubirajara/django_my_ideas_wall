@@ -10,6 +10,16 @@ class IdeasFormTest(TestCase):
         expected = ('title', 'description', 'tags')
         self.assertSequenceEqual(expected, list(form.fields))
 
+    def test_all_required_form_fields(self):
+        """Test form field is required."""
+        form = IdeasForm({
+            'title': '',
+            'description': '',
+        })
+        form.is_valid()
+        self.assertIn('title', form.errors)
+        self.assertIn('description', form.errors)
+
 
 class IdeasFormUpdateTest(TestCase):
 
@@ -18,3 +28,13 @@ class IdeasFormUpdateTest(TestCase):
         form = IdeasFormUpdate()
         expected = ('title', 'description')
         self.assertSequenceEqual(expected, list(form.fields))
+
+    def test_all_required_form_fields(self):
+        """Test form field is required."""
+        form = IdeasFormUpdate({
+            'title': '',
+            'description': '',
+        })
+        form.is_valid()
+        self.assertIn('title', form.errors)
+        self.assertIn('description', form.errors)
