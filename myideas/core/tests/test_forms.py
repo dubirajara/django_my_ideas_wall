@@ -18,7 +18,7 @@ class IdeasFormTest(TestCase):
             'title': '',
             'description': '',
         })
-        form.is_valid()
+        self.assertFalse(form.is_valid())
         self.assertIn('title', form.errors)
         self.assertIn('description', form.errors)
 
@@ -45,7 +45,7 @@ class IdeasFormUpdateTest(TestCase):
             'title': '',
             'description': '',
         })
-        form.is_valid()
+        self.assertFalse(form.is_valid())
         self.assertIn('title', form.errors)
         self.assertIn('description', form.errors)
 
