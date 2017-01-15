@@ -31,6 +31,10 @@ class IdeasModelTest(TestCase):
         field = Ideas._meta.get_field('tags')
         self.assertTrue(field.blank)
 
+    def test_ordering(self):
+        """Check ordering to show"""
+        self.assertListEqual(['-created_at'], Ideas._meta.ordering)
+
     def test_str(self):
         """Check __str__ return title field"""
         self.assertEqual('django app', str(self.idea))

@@ -51,6 +51,10 @@ class DetailsTest(TestCase):
         self.assertTemplateUsed(self.response, 'ideas_details.html')
         self.assertTemplateUsed(self.response, 'base.html')
 
+    def test_html(self):
+        self.assertContains(self.response, 'adminapp')
+        self.assertContains(self.response, 'test app')
+
 
 class ProfileTest(TestCase):
 
@@ -67,6 +71,9 @@ class ProfileTest(TestCase):
         """'User Profile' must use template profile.html and base.html"""
         self.assertTemplateUsed(self.response, 'profile.html')
         self.assertTemplateUsed(self.response, 'base.html')
+
+    def test_html(self):
+        self.assertContains(self.response, 'adminapp')
 
 
 class IdeaFormTest(TestCase):
@@ -93,6 +100,7 @@ class IdeasDetailNotFound(TestCase):
         self.response = self.client.get(r('ideas_details.html', slug='not-found'))
 
     def test_not_found(self):
+        """GET page not found must return status code 404"""
         self.assertEqual(404, self.response.status_code)
 
     def test_template(self):
