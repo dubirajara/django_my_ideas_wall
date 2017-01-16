@@ -107,3 +107,19 @@ class IdeasDetailNotFound(TestCase):
         """'page not found' must use template 404.html and base.html"""
         self.assertTemplateUsed(self.response, '404.html')
         self.assertTemplateUsed(self.response, 'base.html')
+
+
+class RegisterUserAdmin(TestCase):
+
+    def test_get_and_templates_registration_complete(self):
+        response = self.client.get(r('auth_password_reset_complete'))
+        self.assertEqual(200, response.status_code)
+        self.assertTemplateUsed(response, 'registration/password_reset_complete.html')
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_registration_get(self):
+        response = self.client.get(r('registration_register'))
+        self.assertEqual(200, response.status_code)
+        self.assertTemplateUsed(response,
+                                'registration/registration_form.html')
+        self.assertTemplateUsed(response, 'base.html')

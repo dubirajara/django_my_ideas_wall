@@ -1,4 +1,7 @@
 from django.test import TestCase
+from django.shortcuts import resolve_url as r
+from registration.forms import RegistrationForm
+
 from myideas.core.forms import IdeasForm, IdeasFormUpdate
 
 
@@ -55,3 +58,11 @@ class IdeasFormUpdateTest(TestCase):
         self.assertFalse(self.form.fields.get('slug'))
         self.assertFalse(self.form.fields.get('created_at'))
         self.assertFalse(self.form.fields.get('tags'))
+
+
+class RegisterIdea(TestCase):
+
+    def test_registration_get(self):
+        resp = self.client.get(r('registration_register'))
+        self.failUnless(isinstance(resp.context['form'],
+                                   RegistrationForm))
