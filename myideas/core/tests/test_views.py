@@ -111,15 +111,30 @@ class IdeasDetailNotFound(TestCase):
 
 class RegisterUserAdmin(TestCase):
 
-    def test_get_and_templates_registration_complete(self):
-        response = self.client.get(r('auth_password_reset_complete'))
-        self.assertEqual(200, response.status_code)
-        self.assertTemplateUsed(response, 'registration/password_reset_complete.html')
-        self.assertTemplateUsed(response, 'base.html')
-
-    def test_registration_get(self):
+    def test_registration(self):
         response = self.client.get(r('registration_register'))
         self.assertEqual(200, response.status_code)
         self.assertTemplateUsed(response,
                                 'registration/registration_form.html')
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_login(self):
+        response = self.client.get(r('auth_login'))
+        self.assertEqual(200, response.status_code)
+        self.assertTemplateUsed(response,
+                                'registration/login.html')
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_logout(self):
+        response = self.client.get(r('auth_logout'))
+        self.assertEqual(200, response.status_code)
+        self.assertTemplateUsed(response,
+                                'registration/logout.html')
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_get_and_templates_reset_complete(self):
+        response = self.client.get(r('auth_password_reset_complete'))
+        self.assertEqual(200, response.status_code)
+        self.assertTemplateUsed(response,
+                                'registration/password_reset_complete.html')
         self.assertTemplateUsed(response, 'base.html')
