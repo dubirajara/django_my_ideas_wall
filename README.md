@@ -7,7 +7,6 @@ Demo: http://shareideas.herokuapp.com
 [![Coverage Status](https://coveralls.io/repos/github/dubirajara/django_my_ideas_wall/badge.svg?branch=master)](https://coveralls.io/github/dubirajara/django_my_ideas_wall?branch=master)
 [![Updates](https://pyup.io/repos/github/dubirajara/django_my_ideas_wall/shield.svg)](https://pyup.io/repos/github/dubirajara/django_my_ideas_wall/)
 
-
 ##
 
 - Clone the repository:
