@@ -22,7 +22,8 @@ class Ideas(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title + str(self.user_id) + get_random_string(length=10))
+        self.slug = slugify(self.title + str(self.user_id)
+                            + get_random_string(length=10))
         super(Ideas, self).save(*args, **kwargs)
 
     class Meta:
