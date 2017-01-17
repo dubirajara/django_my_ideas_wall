@@ -14,6 +14,12 @@
             <div class="container">
                 <div class="card cart-block">
                     <div class="card-block">
+                        {% if request.user == idea.user %}
+                        <a class="btn btn-default btn-sm" href="{% url 'update' idea.slug %}">
+                        <i class="fa fa-pencil fa-lg"></i></a>
+                        <a class="btn btn-default btn-sm" href="{% url 'delete' idea.slug %}">
+                            <i class="fa fa-trash-o fa-lg"></i></a><br>
+                        {% endif %}
                         <h4 class="card-title">{{ idea.title }}</h4>
                         <h5 class="card-subtitle">By:<a href="{% url 'profile' idea.user.username %}">  {{ idea.user.username }}</a></h5>
                         <p class="card-text">{{ idea.description|truncatewords:"20" }}</p>
