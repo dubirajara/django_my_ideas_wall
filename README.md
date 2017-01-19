@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ```
 - Set up your local configuration file .env:
 ```sh
-cp contrib/env-sample myideas/.env
+python contrib/secret_gen.py
 ```
 - Run the migrations and run tests:
 ```sh
