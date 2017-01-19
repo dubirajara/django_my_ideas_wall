@@ -2,7 +2,7 @@ language: python
 python:
   - "3.5"
 install:
-  - cp contrib/env-sample .env
+  - python contrib/secret_gen.py
   - pip install -q -r requirements.txt
 before_script:
   - python manage.py migrate
