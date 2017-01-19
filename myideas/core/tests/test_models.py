@@ -7,7 +7,7 @@ from myideas.core.models import Ideas
 
 class IdeasModelTest(TestCase):
     def setUp(self):
-        user = get_user_model().objects.create(username='adminapp')
+        user = get_user_model().objects.create(username='diego')
         self.idea = Ideas.objects.create(
                 user=user,
                 title='django app',

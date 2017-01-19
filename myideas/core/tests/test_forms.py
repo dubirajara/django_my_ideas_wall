@@ -10,12 +10,12 @@ class IdeasFormTest(TestCase):
         self.form = IdeasForm()
 
     def test_form_has_fields(self):
-        """IdeasForm must have 3 fields"""
+        """Ideas_Form must have 3 fields"""
         expected = ('title', 'description', 'tags')
         self.assertSequenceEqual(expected, list(self.form.fields))
 
     def test_all_required_form_fields(self):
-        """Test Ideasform field is required."""
+        """Test Ideas_form field is required."""
         form = IdeasForm({
             'title': '',
             'description': '',
@@ -25,7 +25,7 @@ class IdeasFormTest(TestCase):
         self.assertIn('description', form.errors)
 
     def test_fields_not_present(self):
-        """Test Ideasform field is not present."""
+        """Test Ideas_form field is not present."""
         self.assertFalse(self.form.fields.get('created_at'))
         self.assertFalse(self.form.fields.get('slug'))
         self.assertFalse(self.form.fields.get('user'))
@@ -36,12 +36,12 @@ class IdeasFormUpdateTest(TestCase):
         self.form = IdeasFormUpdate()
 
     def test_form_has_fields(self):
-        """UpdateForm must have 2 fields"""
+        """Update_Form must have 2 fields"""
         expected = ('title', 'description')
         self.assertSequenceEqual(expected, list(self.form.fields))
 
     def test_all_required_form_fields(self):
-        """Test Updateform field is required."""
+        """Test Update_form field is required."""
         form = IdeasFormUpdate({
             'title': '',
             'description': '',
@@ -51,7 +51,7 @@ class IdeasFormUpdateTest(TestCase):
         self.assertIn('description', form.errors)
 
     def test_fields_not_present(self):
-        """Test Updateform field is not present."""
+        """Test Update_form field is not present."""
         self.assertFalse(self.form.fields.get('user'))
         self.assertFalse(self.form.fields.get('slug'))
         self.assertFalse(self.form.fields.get('created_at'))
