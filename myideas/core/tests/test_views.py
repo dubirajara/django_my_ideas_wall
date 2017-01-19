@@ -41,6 +41,11 @@ class HomeTest(TestCase):
         expected = 'href="{}"'.format(r('idea_details', slug=self.idea.slug))
         self.assertContains(self.response, expected)
 
+    def test_profile_link(self):
+        """home contains profile links"""
+        expected = 'href="{}"'.format(r('profile', self.idea.user))
+        self.assertContains(self.response, expected)
+
 
 class DetailsTest(TestCase):
 
