@@ -67,7 +67,9 @@ def idea_delete(request, slug=None):
     instance = get_object_or_404(Ideas, slug=slug)
     if request.user == instance.user:
         instance.delete()
-        return HttpResponseRedirect(reverse('profile', args=(request.user.username,)))
+        return HttpResponseRedirect(reverse(
+            'profile', args=(request.user.username,)
+        ))
     else:
         raise PermissionDenied
 
