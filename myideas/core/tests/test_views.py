@@ -6,10 +6,9 @@ from myideas.core.models import Ideas
 
 
 class HomeTest(TestCase):
-
     def setUp(self):
         user = get_user_model().objects.create(username='adminapp')
-        self.idea = Ideas.objects.create(user=user, title='test app')
+        self.idea = Ideas.objects.create(user=user, title='test app', tags='django')
         self.response = self.client.get(r('home'))
 
     def test_get(self):
@@ -38,7 +37,7 @@ class HomeTest(TestCase):
 
     def test_ideas_details_link(self):
         """home contains idea_details links"""
-        expected = 'href="{}"'.format(r('idea_details', slug=self.idea.slug))
+        expected = 'href="{}"'.format(r('idea_details', self.idea.slug))
         self.assertContains(self.response, expected)
 
     def test_profile_link(self):
@@ -46,9 +45,13 @@ class HomeTest(TestCase):
         expected = 'href="{}"'.format(r('profile', self.idea.user))
         self.assertContains(self.response, expected)
 
+    def test_tags_link(self):
+        """home contains tags links"""
+        expected = 'href="{}"'.format(r('by_tags', self.idea.tags))
+        self.assertContains(self.response, expected)
+
 
 class DetailsTest(TestCase):
-
     def setUp(self):
         user = get_user_model().objects.create(username='adminapp')
         self.idea = Ideas.objects.create(user=user, title='test app')
@@ -67,9 +70,13 @@ class DetailsTest(TestCase):
         self.assertContains(self.response, 'adminapp')
         self.assertContains(self.response, 'test app')
 
+    def test_context(self):
+        """Ideas must be in context"""
+        ideas = self.response.context['ideas']
+        self.assertIsInstance(ideas, Ideas)
+
 
 class ProfileTest(TestCase):
-
     def setUp(self):
         user = get_user_model().objects.create(username='adminapp')
         self.idea = Ideas.objects.create(user=user)
@@ -89,7 +96,6 @@ class ProfileTest(TestCase):
 
 
 class IdeaFormTest(TestCase):
-
     def setUp(self):
         self.response = self.client.get(r('ideas_form'))
 
@@ -107,7 +113,6 @@ class IdeaFormTest(TestCase):
 
 
 class IdeasDetailNotFound(TestCase):
-
     def setUp(self):
         self.response = self.client.get(r('ideas_details.html', slug='not-found'))
 
@@ -122,7 +127,6 @@ class IdeasDetailNotFound(TestCase):
 
 
 class RegisterUserAdmin(TestCase):
-
     def test_registration(self):
         """GET registration must return status code 200 and use template base.html"""
         response = self.client.get(r('registration_register'))
