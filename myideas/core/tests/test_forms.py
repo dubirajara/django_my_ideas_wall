@@ -6,7 +6,6 @@ from myideas.core.forms import IdeasForm, IdeasFormUpdate
 
 
 class IdeasFormTest(TestCase):
-
     def setUp(self):
         self.form = IdeasForm()
 
@@ -33,7 +32,6 @@ class IdeasFormTest(TestCase):
 
 
 class IdeasFormUpdateTest(TestCase):
-
     def setUp(self):
         self.form = IdeasFormUpdate()
 
