@@ -8,6 +8,8 @@ from myideas.core.models import Ideas
 class HomeTest(TestCase):
 
     def setUp(self):
+        user = get_user_model().objects.create(username='adminapp')
+        self.idea = Ideas.objects.create(user=user, title='test app')
         self.response = self.client.get(r('home'))
 
     def test_get(self):
@@ -32,6 +34,11 @@ class HomeTest(TestCase):
     def test_ideas_form_link(self):
         """base.html navbar contains ideas_form link"""
         expected = 'href="{}"'.format(r('ideas_form'))
+        self.assertContains(self.response, expected)
+
+    def test_ideas_details_link(self):
+        """home contains idea_details links"""
+        expected = 'href="{}"'.format(r('idea_details', slug=self.idea.slug))
         self.assertContains(self.response, expected)
 
 
