@@ -31,7 +31,7 @@ class ProfileTest(TestCase):
         self.assertTemplateUsed(self.response, 'base.html')
 
     def test_update_and_delete_link(self):
-        """Details contains update/delete links"""
+        """profile contains update/delete links"""
         contents = [
             'href="{}"'.format(r('update', self.idea.slug)),
             'href="{}"'.format(r('delete', self.idea.slug)),
