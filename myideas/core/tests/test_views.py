@@ -37,7 +37,7 @@ class DetailsTest(TestCase):
         contents = [
             'href="{}"'.format(r('update', self.idea.slug)),
             'href="{}"'.format(r('delete', self.idea.slug)),
-                    ]
+        ]
         for expected in contents:
             with self.subTest():
                 self.assertContains(self.response, expected)
@@ -82,7 +82,7 @@ class ProfileTest(TestCase):
         contents = [
             'href="{}"'.format(r('update', self.idea.slug)),
             'href="{}"'.format(r('delete', self.idea.slug)),
-                    ]
+        ]
         for expected in contents:
             with self.subTest():
                 self.assertContains(self.response, expected)
@@ -160,6 +160,34 @@ class IdeasUpdateform(TestCase):
         """'ideas Update' must use template update.html and base.html"""
         self.assertTemplateUsed(self.response, 'update.html')
         self.assertTemplateUsed(self.response, 'base.html')
+
+
+class IdeasDeleteTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.username = 'diego'
+        self.email = 'test@djangoapp.com'
+        self.password = 'test'
+        user = User.objects.create_user(
+            self.username, self.email, self.password
+        )
+        self.login = self.client.login(
+            username=self.username, password=self.password
+        )
+        self.idea = Ideas.objects.create(
+            user=user, title='test app'
+        )
+        self.response = self.client.post(r('delete', self.idea.slug))
+
+    def test_login(self):
+        """delete ideas must be authenticated and be own post"""
+        self.assertEqual(self.login, True)
+
+    def test_get(self):
+        """delete ideas must redirect to profile page"""
+        self.client.login(
+            username=self.username, password=self.password)
+        self.assertRedirects(self.response, r('profile', self.idea.user))
 
 
 class IdeasDetailNotFound(TestCase):
