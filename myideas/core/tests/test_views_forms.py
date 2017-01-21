@@ -56,7 +56,7 @@ class IdeasUpdateform(TestCase):
             username=self.username, password=self.password
         )
         self.idea = Ideas.objects.create(
-            user=user, title='test app'
+            user=user, title='test app', description='test app django'
         )
         self.response = self.client.get(r('update', self.idea.slug))
 
@@ -76,3 +76,11 @@ class IdeasUpdateform(TestCase):
         """'ideas Update' must use template update.html and base.html"""
         self.assertTemplateUsed(self.response, 'update.html')
         self.assertTemplateUsed(self.response, 'base.html')
+
+    def test_redirect(self):
+        """'Update Form post must be redirect to details"""
+        data = {'title': self.idea.title, 'description': self.idea.description}
+        resp_post = self.client.post(r('update', self.idea.slug), data)
+        idea = Ideas.objects.get()
+        self.assertEqual(302, resp_post.status_code)
+        self.assertRedirects(resp_post, r(idea.get_absolute_url()))
