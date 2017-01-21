@@ -1,4 +1,3 @@
 [run]
 omit =
-    myideas/core/apps.py
     myideas/wsgi.py

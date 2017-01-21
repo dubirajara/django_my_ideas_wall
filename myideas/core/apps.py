@@ -1,5 +1,5 @@
-from django.apps import AppConfig
+import django.apps
 
 
-class CoreConfig(AppConfig):
+class CoreConfig(django.apps.AppConfig):
     name = 'core'
