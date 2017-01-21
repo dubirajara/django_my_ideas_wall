@@ -22,6 +22,26 @@ class IdeaFormTest(TestCase):
         self.assertTemplateUsed(self.response, 'idea_form.html')
         self.assertTemplateUsed(self.response, 'base.html')
 
+    def test_redirect(self):
+        """'Ideas Form post must be redirect to home"""
+        self.client = Client()
+        self.username = 'diego'
+        self.email = 'test@djangoapp.com'
+        self.password = 'test'
+        user = User.objects.create_user(
+            self.username, self.email, self.password
+        )
+        self.login = self.client.login(
+            username=self.username, password=self.password
+        )
+        self.idea = Ideas.objects.create(
+            user=user, title='test app'
+        )
+        data = {'title': 'Test text', 'description': 'Test text'}
+        resp_post = self.client.post(r('ideas_form'), data)
+        self.assertEqual(302, resp_post.status_code)
+        self.assertRedirects(resp_post, r('home'))
+
 
 class IdeasUpdateform(TestCase):
     def setUp(self):
