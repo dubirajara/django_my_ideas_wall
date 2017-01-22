@@ -16,6 +16,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='ideas',
             name='tags',
-            field=tagulous.models.fields.TagField(_set_tag_meta=True, autocomplete_view='person_skills_autocomplete', blank=True, force_lowercase=True, help_text='Enter a comma-separated tag string', initial='coding, eating, gaming', max_count=5, to='core._Tagulous_Ideas_tags'),
+            field=tagulous.models.fields.TagField(
+                _set_tag_meta=True,
+                autocomplete_view='person_skills_autocomplete',
+                blank=True, force_lowercase=True,
+                help_text='Enter a comma-separated tag string',
+                initial='coding, eating, gaming', max_count=5,
+                to='core._Tagulous_Ideas_tags'),
         ),
     ]

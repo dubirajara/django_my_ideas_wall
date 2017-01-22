@@ -15,6 +15,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='ideas',
             name='slug',
-            field=models.SlugField(blank=True, max_length=60, null=True, unique=True),
+            field=models.SlugField(
+                blank=True,
+                max_length=60,
+                null=True,
+                unique=True),
         ),
     ]

@@ -16,6 +16,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='ideas',
             name='tags',
-            field=tagulous.models.fields.TagField(_set_tag_meta=True, help_text='Enter a comma-separated tag string', to='core._Tagulous_Ideas_tags'),
+            field=tagulous.models.fields.TagField(
+                _set_tag_meta=True,
+                help_text='Enter a comma-separated tag string',
+                to='core._Tagulous_Ideas_tags'),
         ),
     ]
