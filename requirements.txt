@@ -16,7 +16,7 @@ python-social-auth==0.3.3
 social-auth-app-django==1.0.0
 social-auth-core==1.0.1
 python3-openid==3.0.10
-requests==2.12.5
+requests==2.13.0
 requests-oauthlib==0.7.0
 six==1.10.0
 static3==0.7.0
