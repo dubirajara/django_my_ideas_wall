@@ -107,6 +107,10 @@ class IdeasDeleteTest(TestCase):
         """delete ideas must be authenticated and be own post"""
         self.assertEqual(self.login, True)
 
+    def test_delete(self):
+        """Check models data delete"""
+        self.assertFalse(Ideas.objects.exists())
+
     def test_post_redirect(self):
         """delete ideas must redirect to profile page"""
         self.assertRedirects(self.response, r('profile', self.idea.user))
