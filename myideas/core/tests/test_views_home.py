@@ -1,12 +1,12 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from myideas.core.models import Ideas
 
 
 class HomeTest(TestCase):
     def setUp(self):
-        user = get_user_model().objects.create(username='diego')
+        user = User.objects.create_user(username='diego')
         self.idea = Ideas.objects.create(
             user=user, title='test app', tags='django'
         )
