@@ -21,35 +21,27 @@ class HomeTest(TestCase):
         self.assertTemplateUsed(self.response, 'index.html')
         self.assertTemplateUsed(self.response, 'base.html')
 
-    def test_login_link(self):
-        """base.html nav bar must contains login page link"""
-        expected = 'href="{}"'.format(r('auth_login'))
-        self.assertContains(self.response, expected)
+    def test_form_login_register_link(self):
+        """base.html nav bar must contains idea_forms/login/register link"""
+        contents = (
+            'href="{}"'.format(r('ideas_form')),
+            'href="{}"'.format(r('auth_login')),
+            'href="{}"'.format(r('registration_register')),
+        )
+        for expected in contents:
+            with self.subTest():
+                self.assertContains(self.response, expected)
 
-    def test_register_link(self):
-        """base.html nav bar must contains register page link"""
-        expected = 'href="{}"'.format(r('registration_register'))
-        self.assertContains(self.response, expected)
-
-    def test_ideas_form_link(self):
-        """base.html nav bar contains ideas_form link"""
-        expected = 'href="{}"'.format(r('ideas_form'))
-        self.assertContains(self.response, expected)
-
-    def test_ideas_details_link(self):
-        """home contains idea_details links"""
-        expected = 'href="{}"'.format(r('idea_details', self.idea.slug))
-        self.assertContains(self.response, expected)
-
-    def test_profile_link(self):
-        """home contains profile links"""
-        expected = 'href="{}"'.format(r('profile', self.idea.user))
-        self.assertContains(self.response, expected)
-
-    def test_tags_link(self):
-        """home contains tags links"""
-        expected = 'href="{}"'.format(r('by_tags', self.idea.tags))
-        self.assertContains(self.response, expected)
+    def test_details_profile_tags_link(self):
+        """home contains details/profile/tags links"""
+        contents = (
+            'href="{}"'.format(r('idea_details', self.idea.slug)),
+            'href="{}"'.format(r('profile', self.idea.user)),
+            'href="{}"'.format(r('by_tags', self.idea.tags))
+        )
+        for expected in contents:
+            with self.subTest():
+                self.assertContains(self.response, expected)
 
     def test_html(self):
         self.assertContains(self.response, self.idea.user)
@@ -58,11 +50,11 @@ class HomeTest(TestCase):
         self.assertContains(self.response, self.idea.tags)
 
     def test_update(self):
-        """edit ideas without login must return code 4003"""
+        """edit ideas without login must return code 403"""
         response = self.client.get(r('update', self.idea.slug))
         self.assertEqual(403, response.status_code)
 
     def test_delete(self):
-        """delete ideas without login must return code 4003"""
+        """delete ideas without login must return code 403"""
         response = self.client.get(r('delete', self.idea.slug))
         self.assertEqual(403, response.status_code)
