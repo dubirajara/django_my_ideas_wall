@@ -23,7 +23,7 @@
                     </div>
                     {% if idea.tags %}<br>
                            {% for tag in idea.tags.all %}
-                               <a class="textag post-tag card-text" href="{% url 'by_tags' tag %}">{{ tag }}</a>
+                               <a class="textag post-tag card-text" href="{% url 'by_tags' tag %}"><i class="fa fa-tag">&nbsp{{ tag }}</i></a>
                         {% endfor %}
                         {% endif %}
                 </div>
