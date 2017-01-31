@@ -1,5 +1,5 @@
 ## My Ideas Wall web app. 
-# Developed using [Django Framework](https://www.djangoproject.com).
+### Developed using [Django Framework](https://www.djangoproject.com).
 
 Demo: http://shareideas.herokuapp.com
 
