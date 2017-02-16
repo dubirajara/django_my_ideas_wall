@@ -113,4 +113,5 @@ class IdeasDeleteTest(TestCase):
     def test_post_redirect(self):
         """delete ideas must redirect to profile page"""
         self.assertRedirects(self.response, r('profile', self.idea.user))
+        self.assertEqual(302, self.response.status_code)
 
