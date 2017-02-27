@@ -14,7 +14,7 @@ class DetailsTest(TestCase):
         user = User.objects.create_user(
             self.username, self.email, self.password
         )
-        self.login = self.client.login(
+        self.client.login(
             username=self.username, password=self.password
         )
         self.idea = Ideas.objects.create(

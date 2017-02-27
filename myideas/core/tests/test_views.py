@@ -14,7 +14,7 @@ class ProfileTest(TestCase):
         user = User.objects.create_user(
             self.username, self.email, self.password
         )
-        self.login = self.client.login(
+        self.client.login(
             username=self.username, password=self.password
         )
         self.idea = Ideas.objects.create(user=user)
@@ -52,7 +52,7 @@ class IdeaTagsTest(TestCase):
         user = User.objects.create_user(
             self.username, self.email, self.password
         )
-        self.login = self.client.login(
+        self.client.login(
             username=self.username, password=self.password
         )
         self.idea = Ideas.objects.create(
@@ -104,7 +104,7 @@ class IdeasDeleteTest(TestCase):
 
     def test_login(self):
         """delete ideas must be authenticated and be own post"""
-        self.assertEqual(self.login, True)
+        self.assertTrue(self.login)
 
     def test_delete(self):
         """Check models data delete"""

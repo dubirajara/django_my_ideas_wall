@@ -31,7 +31,7 @@ class IdeaFormTest(TestCase):
         user = User.objects.create_user(
             self.username, self.email, self.password
         )
-        self.login = self.client.login(
+        self.client.login(
             username=self.username, password=self.password
         )
         self.idea = Ideas.objects.create(
@@ -66,7 +66,7 @@ class IdeasUpdateform(TestCase):
 
     def test_login(self):
         """GET 'update Form' must be authenticated and be own post"""
-        self.assertEqual(self.login, True)
+        self.assertTrue(self.login)
 
     def test_get(self):
         """GET 'update Form' must return status code 200"""
