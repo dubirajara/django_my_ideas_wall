@@ -20,6 +20,7 @@ ALLOWED_HOSTS=*
 #EMAIL_PORT=25
 #EMAIL_USE_TLS=False
 
+# SENDGRID SETTINGS
 EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 EMAIL_HOST=smtp.sendgrid.com
 SENDGRID_API_KEY=
