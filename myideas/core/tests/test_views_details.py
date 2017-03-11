@@ -51,18 +51,18 @@ class DetailsTest(TestCase):
         ideas = self.response.context['ideas']
         self.assertIsInstance(ideas, Ideas)
 
-
-class IdeasDetailNotFound(TestCase):
-    def setUp(self):
-        self.response = self.client.get(r(
+    def not_found(self):
+        self.resp = self.client.get(r(
             'idea_details', slug='not-found')
         )
 
-    def test_not_found(self):
+    def test_page_not_found(self):
         """GET page not found must return status code 404"""
-        self.assertEqual(404, self.response.status_code)
+        self.not_found()
+        self.assertEqual(404, self.resp.status_code)
 
-    def test_template(self):
+    def test_template_not_found(self):
         """'page not found' must use template 404.html and base.html"""
-        self.assertTemplateUsed(self.response, '404.html')
-        self.assertTemplateUsed(self.response, 'base.html')
+        self.not_found()
+        self.assertTemplateUsed(self.resp, '404.html')
+        self.assertTemplateUsed(self.resp, 'base.html')
