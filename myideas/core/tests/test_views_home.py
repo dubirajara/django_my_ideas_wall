@@ -1,3 +1,4 @@
+from django.test import Client
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
@@ -6,9 +7,22 @@ from myideas.core.models import Ideas
 
 class HomeTest(TestCase):
     def setUp(self):
-        user = User.objects.create_user(username='diego')
+        self.client = Client()
+        self.username = 'diego'
+        self.email = 'test@djangoapp.com'
+        self.password = 'test'
+        user = User.objects.create_user(
+            self.username, self.email, self.password
+        )
         self.idea = Ideas.objects.create(
             user=user, title='test app', tags='django'
+        )
+
+        self.response = self.client.get(r('home'))
+
+    def signin_and_get(self):
+        self.login = self.client.login(
+            username=self.username, password=self.password
         )
         self.response = self.client.get(r('home'))
 
@@ -21,12 +35,24 @@ class HomeTest(TestCase):
         self.assertTemplateUsed(self.response, 'index.html')
         self.assertTemplateUsed(self.response, 'base.html')
 
-    def test_form_login_register_link(self):
+    def test_nav_links(self):
         """base.html nav bar must contains idea_forms/login/register link"""
         contents = (
             'href="{}"'.format(r('ideas_form')),
             'href="{}"'.format(r('auth_login')),
             'href="{}"'.format(r('registration_register')),
+        )
+        for expected in contents:
+            with self.subTest():
+                self.assertContains(self.response, expected)
+
+    def test_nav_links_login(self):
+        """base.html nav bar must contains idea_forms/logout/profile link"""
+        self.signin_and_get()
+        contents = (
+            'href="{}"'.format(r('ideas_form')),
+            'href="{}"'.format(r('auth_logout')),
+            'href="{}"'.format(r('profile', self.idea.user)),
         )
         for expected in contents:
             with self.subTest():
