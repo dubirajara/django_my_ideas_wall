@@ -22,6 +22,16 @@ class IdeaFormTest(TestCase):
         self.assertTemplateUsed(self.response, 'idea_form.html')
         self.assertTemplateUsed(self.response, 'base.html')
 
+    def test_html(self):
+        contents = [
+            'To share your idea you have to be logged in',
+            'href="{}"'.format(r('auth_login')),
+        ]
+
+        for expected in contents:
+            with self.subTest():
+                self.assertContains(self.response, expected)
+
     def test_redirect(self):
         """'Ideas Form post must be redirect to home"""
         self.client = Client()
