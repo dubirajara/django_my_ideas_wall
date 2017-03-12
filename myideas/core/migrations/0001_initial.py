@@ -41,7 +41,11 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
                 ('slug', models.SlugField(max_length=60, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('tags', tagulous.models.fields.TagField(_set_tag_meta=True, blank=True, force_lowercase=True, help_text='Enter a comma-separated tag string', max_count=5, to='core._Tagulous_Ideas_tags')),
+                ('tags', tagulous.models.fields.TagField(_set_tag_meta=True, 
+                                                         blank=True, 
+                                                         force_lowercase=True, 
+                                                         help_text='Enter a comma-separated tag string', 
+                                                         max_count=5, to='core._Tagulous_Ideas_tags')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
