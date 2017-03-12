@@ -5,6 +5,8 @@ from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
+from rest_framework import status
+
 from myideas.core.models import Ideas
 
 
@@ -26,15 +28,12 @@ class LikeApiTest(TestCase):
             username=self.username, password=self.password
         )
         self.response = self.client.get(r(self.idea.get_api_like_url()))
+        self.get_json = json.loads(self.response.content.decode('utf-8'))
 
     def test_get(self):
         """GET 'Ideas like api' must return status code 200"""
         self.api_signin_and_get()
         self.assertEqual(200, self.response.status_code)
-
-    def test_api_status_likes(self):
-        self.api_signin_and_get()
-        self.assertTrue(self.response)
 
     def test_api_likes_count(self):
         self.api_signin_and_get()
@@ -44,11 +43,14 @@ class LikeApiTest(TestCase):
 
     def test_content(self):
         self.api_signin_and_get()
-        response = json.loads(self.response.content.decode('utf-8'))
-        self.assertEqual(True, response['updated'])
-        self.assertEqual(True, response['liked'])
-        self.assertIn('updated', response)
-        self.assertIn('liked', response)
+        self.assertEqual(self.get_json, {"liked": True, "updated": True})
+        self.api_signin_and_get()
+        self.assertEqual(self.get_json, {"liked": False, "updated": True})
+
+    def test_htm(self):
+        self.api_signin_and_get()
+        self.assertIn('updated', self.get_json)
+        self.assertIn('liked', self.get_json)
 
     def test_access_forbidden(self):
         """GET page not logged in must return status code 403"""
