@@ -1,16 +1,16 @@
 import json
 
-from django.test import TestCase
 from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
 from rest_framework import status
+from rest_framework.test import APITestCase
 
 from myideas.core.models import Ideas
 
 
-class LikeApiTest(TestCase):
+class LikeApiTest(APITestCase):
     def setUp(self):
         self.client = Client()
         self.username = 'diego'
@@ -33,7 +33,7 @@ class LikeApiTest(TestCase):
     def test_get(self):
         """GET 'Ideas like api' must return status code 200"""
         self.api_signin_and_get()
-        self.assertEqual(200, self.response.status_code)
+        self.assertEqual(status.HTTP_200_OK, self.response.status_code)
 
     def test_api_likes_count(self):
         self.api_signin_and_get()
@@ -55,4 +55,4 @@ class LikeApiTest(TestCase):
     def test_access_forbidden(self):
         """GET page not logged in must return status code 403"""
         self.response = self.client.get(r(self.idea.get_api_like_url()))
-        self.assertEqual(403, self.response.status_code)
+        self.assertEqual(status.HTTP_403_FORBIDDEN, self.response.status_code)
