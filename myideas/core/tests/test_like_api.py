@@ -29,13 +29,15 @@ class LikeApiTest(TestCase):
         self.api_signin_and_get()
         self.assertEqual(200, self.response.status_code)
 
-    def test_api_status(self):
+    def test_api_status_likes(self):
         self.api_signin_and_get()
         self.assertTrue(self.response)
 
     def test_api_likes_count(self):
         self.api_signin_and_get()
-        self.assertEqual(1, self.idea.likes.count())
+        self.assertEqual(1, self.idea.likes.count()),
+        self.api_signin_and_get()
+        self.assertEqual(0, self.idea.likes.count())
 
     def test_access_forbidden(self):
         """GET page not logged in must return status code 403"""
