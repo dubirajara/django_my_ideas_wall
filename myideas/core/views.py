@@ -2,7 +2,11 @@ from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
 from registration.forms import User
+
 from .forms import IdeasForm, IdeasFormUpdate
 from .models import Ideas
 
@@ -94,3 +98,28 @@ def profile(request, username):
     }
 
     return render(request, 'profile.html', context)
+
+
+# thanks the snippet video tutorial django likes: https://www.youtube.com/watch?v=pkPRtQf6oQ8
+class IdeaLikeAPI(APIView):
+    authentication_classes = (authentication.SessionAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, slug=None):
+        obj = get_object_or_404(Ideas, slug=slug)
+        user = self.request.user
+        updated = False
+        liked = False
+        if user.is_authenticated():
+            if user in obj.likes.all():
+                liked = False
+                obj.likes.remove(user)
+            else:
+                liked = True
+                obj.likes.add(user)
+            updated = True
+        data = {
+            "updated": updated,
+            "liked": liked
+        }
+        return Response(data)

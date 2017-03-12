@@ -21,19 +21,38 @@
                             <i class="fa fa-trash-o fa-lg"></i>Delete</a></p>
                         {% endif %}
                         <h4 class="card-title" style="text-align: center;">{{ ideas.title }}</h4>
-                        <h6 class="card-subtitle" style="text-align: center;"><small class="text-muted">By: <a href="{% url 'profile' ideas.user.username %}">{{ ideas.user.username }}</a></small></h6><br>
+                        <h6 class="card-subtitle" style="text-align: center;"><small class="text-muted">
+                            By: <a href="{% url 'profile' ideas.user.username %}">
+                            {{ ideas.user.username }}</a></small>
+                        </h6>
+                        <br>
                         <p class="card-text text-justify">{{ ideas.description }}</p><br>
                     <div style="text-align: center;">
+                            <p>
+                            <a class='like-btn' data-href='{{ ideas.get_api_like_url }}'
+                               data-likes='{{ ideas.likes.count }}' href='{{ ideas.get_like_url }}'>
+                                {{ ideas.likes.count }} <i class="fa fa-thumbs-up"></i>
+                            </a>
+                        </p>
 
-                    {% if ideas.tags %}<br>
+                    {% if ideas.tags %}
                         {% for tag in ideas.tags.all %}
-                               <a class="textag post-tag card-text" href="{% url 'by_tags' tag %}"><i class="fa fa-tag">&nbsp{{ tag }}</i></a>
+                               <a class="textag post-tag card-text" href="{% url 'by_tags' tag %}">
+                                   <i class="fa fa-tag">&nbsp{{ tag }}</i></a>
                     {% endfor %}
                     {% endif %}
                     </div>
                     <div style="text-align: center;"><br>
-                        <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-                        <div><a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ ideas.title }}" data-lang="en" data-show-count=“true”>Tweet</a></div>
+
+                        <div>
+                            <a href="https://twitter.com/share" class="twitter-share-button"
+                                data-text="{{ ideas.title }}" data-lang="en" data-show-count=“true”>Tweet
+                            </a>
+                        </div>
+
+                        <div class="fb-share-button"  data-href="{{ request.build_absolute_uri }}"
+                             data-layout="button_count"></div>
+
                     </div>
 
 

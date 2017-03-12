@@ -23,7 +23,17 @@
                         <h4 class="card-title">{{ idea.title }}</h4>
                         <h5 class="card-subtitle">By: {{ idea.user.username }}</h5>
                         <p class="card-text">{{ idea.description|truncatewords:"20" }}</p>
-                        <br><br><div class="card-btn"><a href="{{ idea.get_absolute_url }}" class="btn btn-primary">MORE</a></div>
+                          <br>
+                        <br>
+                          <p>
+                            <a class='like-btn' data-href='{{ idea.get_api_like_url }}'
+                               data-likes='{{ idea.likes.count }}' href='{{ idea.get_like_url }}'>
+                                {{ idea.likes.count }} <i class="fa fa-thumbs-up"></i>
+                            </a>
+                        </p>
+                        <div class="card-btn">
+                            <a href="{{ idea.get_absolute_url }}" class="btn btn-primary">MORE</a>
+                        </div>
                     </div>
                     {% if idea.tags %}<br>
                            {% for tag in idea.tags.all %}

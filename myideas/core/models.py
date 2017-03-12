@@ -10,6 +10,9 @@ class Ideas(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(max_length=60)
     description = models.TextField()
+    likes = models.ManyToManyField(User,
+                                   blank=True,
+                                   related_name='ideas_likes')
     slug = models.SlugField(max_length=60, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = tagulous.models.TagField(
@@ -35,3 +38,8 @@ class Ideas(models.Model):
 
     def get_absolute_url(self):
         return r('idea_details', slug=self.slug)
+
+    def get_api_like_url(self):
+        return r('like_api', slug=self.slug)
+
+
