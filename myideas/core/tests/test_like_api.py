@@ -1,7 +1,10 @@
+import json
+
 from django.test import TestCase
 from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
+
 from myideas.core.models import Ideas
 
 
@@ -35,9 +38,17 @@ class LikeApiTest(TestCase):
 
     def test_api_likes_count(self):
         self.api_signin_and_get()
-        self.assertEqual(1, self.idea.likes.count()),
+        self.assertEqual(1, self.idea.likes.count())
         self.api_signin_and_get()
         self.assertEqual(0, self.idea.likes.count())
+
+    def test_content(self):
+        self.api_signin_and_get()
+        response = json.loads(self.response.content.decode('utf-8'))
+        self.assertEqual(True, response['updated'])
+        self.assertEqual(True, response['liked'])
+        self.assertIn('updated', response)
+        self.assertIn('liked', response)
 
     def test_access_forbidden(self):
         """GET page not logged in must return status code 403"""

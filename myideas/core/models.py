@@ -1,9 +1,10 @@
 from django.db import models
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
-import tagulous.models
 from django.template.defaultfilters import slugify
 from django.utils.crypto import get_random_string
+
+import tagulous.models
 
 
 class Ideas(models.Model):

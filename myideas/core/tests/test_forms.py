@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
+
 from registration.forms import RegistrationForm
 
 from myideas.core.forms import IdeasForm
