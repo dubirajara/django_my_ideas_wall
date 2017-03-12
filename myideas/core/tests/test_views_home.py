@@ -36,9 +36,10 @@ class HomeTest(TestCase):
         self.assertTemplateUsed(self.response, 'base.html')
 
     def test_nav_links(self):
-        """base.html nav bar must contains idea_forms/login/register link"""
+        """base.html nav bar must contains idea_forms/home/login/register links"""
         contents = (
             'href="{}"'.format(r('ideas_form')),
+            'href="{}"'.format(r('home')),
             'href="{}"'.format(r('auth_login')),
             'href="{}"'.format(r('registration_register')),
         )
@@ -50,7 +51,9 @@ class HomeTest(TestCase):
         """base.html nav bar must contains idea_forms/logout/profile link"""
         self.signin_and_get()
         contents = (
+            self.idea.user,
             'href="{}"'.format(r('ideas_form')),
+            'href="{}"'.format(r('home')),
             'href="{}"'.format(r('auth_logout')),
             'href="{}"'.format(r('profile', self.idea.user)),
         )
