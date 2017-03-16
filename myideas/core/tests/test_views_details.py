@@ -15,13 +15,16 @@ class DetailsTest(TestCase):
         user = User.objects.create_user(
             self.username, self.email, self.password
         )
-        self.client.login(
-            username=self.username, password=self.password
-        )
+
         self.idea = Ideas.objects.create(
-            user=user, title='test app'
+            user=user, title='test app', tags='django'
         )
         self.response = self.client.get(r(self.idea.get_absolute_url()))
+
+    def api_signin_and_get(self):
+        self.login = self.client.login(
+            username=self.username, password=self.password
+        )
 
     def test_get(self):
         """GET 'Ideas Details' must return status code 200"""
@@ -34,18 +37,32 @@ class DetailsTest(TestCase):
 
     def test_update_and_delete_link(self):
         """Details contains update/delete links"""
+        self.api_signin_and_get()
+        response = self.client.get(r(self.idea.get_absolute_url()))
         contents = [
             'href="{}"'.format(r('update', self.idea.slug)),
             'href="{}"'.format(r('delete', self.idea.slug)),
         ]
         for expected in contents:
             with self.subTest():
-                self.assertContains(self.response, expected)
+                self.assertContains(response, expected)
 
     def test_html(self):
         self.assertContains(self.response, self.idea.user)
         self.assertContains(self.response, self.idea.title)
         self.assertContains(self.response, self.idea.slug)
+
+    def test_links(self):
+        """Details contains tags/twitter/fb and disqus thread links"""
+        contents = [
+            'href="{}"'.format(r('by_tags', self.idea.tags)),
+            'href="{}"'.format(r('https://twitter.com/share')),
+            'fb-share-button',
+            'disqus_thread'
+        ]
+        for expected in contents:
+            with self.subTest():
+                self.assertContains(self.response, expected)
 
     def test_context(self):
         """Ideas must be in context"""
