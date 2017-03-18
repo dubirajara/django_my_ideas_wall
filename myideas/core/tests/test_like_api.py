@@ -36,18 +36,21 @@ class LikeApiTest(APITestCase):
         self.assertEqual(status.HTTP_200_OK, self.response.status_code)
 
     def test_api_likes_count(self):
+        """Test like count 1 = like 0 = unlike"""
         self.api_signin_and_get()
         self.assertEqual(1, self.idea.likes.count())
         self.api_signin_and_get()
         self.assertEqual(0, self.idea.likes.count())
 
     def test_content(self):
+        '''Test request like must contain and return json '''
         self.api_signin_and_get()
         self.assertEqual(self.get_json, {"liked": True, "updated": True})
         self.api_signin_and_get()
         self.assertEqual(self.get_json, {"liked": False, "updated": True})
 
     def test_htm(self):
+        '''test html must contain word "liked" adn "updated" '''
         self.api_signin_and_get()
         self.assertIn('updated', self.get_json)
         self.assertIn('liked', self.get_json)
