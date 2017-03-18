@@ -43,6 +43,7 @@ class IdeaTagsTest(TestCase):
                 self.assertContains(self.response, expected)
 
     def test_html(self):
+        '''Test Hmtl context'''
         self.assertContains(self.response, self.idea.user)
         self.assertContains(self.response, self.idea.title)
         self.assertContains(self.response, self.idea.slug)
