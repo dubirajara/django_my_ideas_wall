@@ -30,7 +30,7 @@ class LikeApiTest(APITestCase):
         self.response = self.client.get(r(self.idea.get_api_like_url()))
         self.get_json = json.loads(self.response.content.decode('utf-8'))
 
-    def test_get(self):
+    def test_api_get(self):
         """GET 'Ideas like api' must return status code 200"""
         self.api_signin_and_get()
         self.assertEqual(status.HTTP_200_OK, self.response.status_code)
@@ -42,20 +42,20 @@ class LikeApiTest(APITestCase):
         self.api_signin_and_get()
         self.assertEqual(0, self.idea.likes.count())
 
-    def test_content(self):
-        '''Test request like must contain and return json '''
+    def test_api_content(self):
+        """Test request like must contain and return json"""
         self.api_signin_and_get()
         self.assertEqual(self.get_json, {"liked": True, "updated": True})
         self.api_signin_and_get()
         self.assertEqual(self.get_json, {"liked": False, "updated": True})
 
-    def test_htm(self):
-        '''test html must contain word "liked" adn "updated" '''
+    def test_api_html(self):
+        """test html must contain word "liked" and "updated"""
         self.api_signin_and_get()
         self.assertIn('updated', self.get_json)
         self.assertIn('liked', self.get_json)
 
-    def test_access_forbidden(self):
+    def test_api_access_forbidden(self):
         """GET page not logged in must return status code 403"""
         self.response = self.client.get(r(self.idea.get_api_like_url()))
         self.assertEqual(status.HTTP_403_FORBIDDEN, self.response.status_code)
