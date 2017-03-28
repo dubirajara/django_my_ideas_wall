@@ -1,18 +1,17 @@
 import json
 
-from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
 from rest_framework import status
-from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase, APIClient
 
 from myideas.core.models import Ideas
 
 
 class LikeApiTest(APITestCase):
     def setUp(self):
-        self.client = Client()
+        self.client = APIClient()
         self.username = 'diego'
         self.email = 'test@djangoapp.com'
         self.password = 'test'
@@ -50,7 +49,7 @@ class LikeApiTest(APITestCase):
         self.assertEqual(self.get_json, {"liked": False, "updated": True})
 
     def test_api_html(self):
-        """test html must contain word "liked" and "updated"""
+        """test html must contain words "liked" and "updated"""
         self.api_signin_and_get()
         self.assertIn('updated', self.get_json)
         self.assertIn('liked', self.get_json)
