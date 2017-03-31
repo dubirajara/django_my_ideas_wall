@@ -13,7 +13,6 @@ from .models import Ideas
 from .forms import IdeasForm, IdeasFormUpdate
 
 
-
 def home(request):
     queryset = Ideas.objects.all()
     context = {
