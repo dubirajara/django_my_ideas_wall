@@ -31,7 +31,7 @@ class IdeasDeleteTest(TestCase):
         """Check models data delete"""
         self.assertFalse(Ideas.objects.exists())
 
-    def test_post_redirect(self):
+    def test_delete_redirect(self):
         """delete ideas must redirect to profile page"""
         self.assertRedirects(self.response, r('profile', self.idea.user))
         self.assertEqual(302, self.response.status_code)
