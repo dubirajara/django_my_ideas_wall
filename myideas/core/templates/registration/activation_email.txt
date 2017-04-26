@@ -1,12 +1,14 @@
-Activate account at {{ site.name }}:
-
 Hello {{ user.username }}!
 
-Click the link below to activate your account.
+Activate account at {{ site.name }}.
+
+Click the link below to activate your account:
 
 http://{{ site.domain }}{% url 'registration_activate' activation_key %}
 
 
 The above link is valid for {{ expiration_days }} days.
 
+
+Thank you.
 
