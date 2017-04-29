@@ -31,6 +31,10 @@ class IdeasModelTest(TestCase):
         field = Ideas._meta.get_field('tags')
         self.assertTrue(field.blank)
 
+    def test_slug_null(self):
+        field = Ideas._meta.get_field('slug')
+        self.assertTrue(field.null)
+
     def test_ordering(self):
         """Check ordering to show"""
         self.assertListEqual(['-created_at'], Ideas._meta.ordering)
