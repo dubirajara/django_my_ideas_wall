@@ -2436,7 +2436,7 @@ html.is-builder .article .lead:not([data-app-remove-it]) + div .btn {
     display: inline-block;
     padding: .2em .2em;
     margin: 2px 2px 2px 0;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1;
     white-space: nowrap;
     text-decoration: none;
