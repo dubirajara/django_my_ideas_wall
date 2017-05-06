@@ -42,7 +42,9 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(max_length=60, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('likes', models.ManyToManyField(blank=True, related_name='ideas_likes', to=settings.AUTH_USER_MODEL)),
-                ('tags', tagulous.models.fields.TagField(_set_tag_meta=True, blank=True, force_lowercase=True, help_text='Enter a comma-separated tag string', max_count=5, to='core._Tagulous_Ideas_tags')),
+                ('tags', tagulous.models.fields.TagField(_set_tag_meta=True, blank=True, 
+                                                         force_lowercase=True, help_text='Enter a comma-separated tag string', 
+                                                         max_count=5, to='core._Tagulous_Ideas_tags')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
