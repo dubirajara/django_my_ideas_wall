@@ -26,11 +26,17 @@
                           <br>
                         <br>
                           <p>
+                              {% if user.is_authenticated %}
                             <a class='like-btn' data-href='{{ idea.get_api_like_url }}'
                                data-likes='{{ idea.likes.count }}' href='{{ idea.get_like_url }}'>
                                 {{ idea.likes.count }} <i class="fa fa-thumbs-up"></i>
                             </a>
-                        </p>
+                              {% else %}
+                              <a class='inactiveLink'>
+                                {{ idea.likes.count }} <i class="fa fa-thumbs-up"></i>
+                            </a>
+                              {% endif %}
+                            </p>
                         <div class="card-btn">
                             <a href="{{ idea.get_absolute_url }}" class="btn btn-primary">MORE</a>
                         </div>

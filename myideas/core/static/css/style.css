@@ -2446,3 +2446,11 @@ html.is-builder .article .lead:not([data-app-remove-it]) + div .btn {
     border-radius: 5px;
     transition: all .15s ease-in-out;
 }
+
+
+a.inactiveLink:hover {
+  color: #898b8c;
+  text-decoration: none;
+  pointer-events: none;
+  cursor: default;
+}

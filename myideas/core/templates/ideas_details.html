@@ -28,12 +28,18 @@
                         <br>
                         <p class="card-text text-justify">{{ ideas.description }}</p><br>
                     <div style="text-align: center;">
-                            <p>
+                          <p>
+                              {% if user.is_authenticated %}
                             <a class='like-btn' data-href='{{ ideas.get_api_like_url }}'
                                data-likes='{{ ideas.likes.count }}' href='{{ ideas.get_like_url }}'>
                                 {{ ideas.likes.count }} <i class="fa fa-thumbs-up"></i>
                             </a>
-                        </p>
+                              {% else %}
+                              <a class='inactiveLink'>
+                                {{ ideas.likes.count }} <i class="fa fa-thumbs-up"></i>
+                            </a>
+                              {% endif %}
+                            </p>
 
                     {% if ideas.tags %}
                         {% for tag in ideas.tags.all %}
