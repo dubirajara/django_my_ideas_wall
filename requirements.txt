@@ -1,7 +1,7 @@
 dj-config-url==0.1.1
 dj-database-url==0.4.2
 dj-static==0.0.6
-Django==1.10.6
+Django==1.11.1
 django-crispy-forms==1.6.1
 django-registration-redux==1.6
 -e git://github.com/AASHE/django-tagulous@4f7dd6c04be0c70ccb5e23ca5652815bf3bb0258#egg=django_tagulous
