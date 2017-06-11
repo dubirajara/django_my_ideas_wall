@@ -12,4 +12,4 @@ class IdeasForm(forms.ModelForm):
 class IdeasFormUpdate(forms.ModelForm):
     class Meta:
         model = Ideas
-        fields = ('title', 'description')
+        fields = ('title', 'description', 'tags')

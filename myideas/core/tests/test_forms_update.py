@@ -8,8 +8,8 @@ class IdeasFormUpdateTest(TestCase):
         self.form = IdeasFormUpdate()
 
     def test_form_has_fields(self):
-        """Update_Form must have 2 fields"""
-        expected = ('title', 'description')
+        """Update_Form must have 3 fields"""
+        expected = ('title', 'description', 'tags')
         self.assertSequenceEqual(expected, list(self.form.fields))
 
     def test_all_required_form_fields(self):
@@ -27,4 +27,3 @@ class IdeasFormUpdateTest(TestCase):
         self.assertFalse(self.form.fields.get('user'))
         self.assertFalse(self.form.fields.get('slug'))
         self.assertFalse(self.form.fields.get('created_at'))
-        self.assertFalse(self.form.fields.get('tags'))
