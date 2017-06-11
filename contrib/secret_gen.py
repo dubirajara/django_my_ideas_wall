@@ -40,3 +40,4 @@ SOCIAL_AUTH_TWITTER_SECRET=
 # Writing our configuration file to '.env'
 with open('myideas/.env', 'w') as configfile:
     configfile.write(CONFIG_STRING)
+    print('Created the .env file successfully.')
