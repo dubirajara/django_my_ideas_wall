@@ -4,8 +4,11 @@ Web app developed using [Django](https://www.djangoproject.com).
 Demo: https://shareideas.herokuapp.com
 
 [![Build Status](https://travis-ci.org/dubirajara/django_my_ideas_wall.svg?branch=master)](https://travis-ci.org/dubirajara/django_my_ideas_wall)
+[![Updates](https://pyup.io/repos/github/dubirajara/django_my_ideas_wall/shield.svg)](https://pyup.io/repos/github/dubirajara/django_my_ideas_wall/)
 [![Code Health](https://landscape.io/github/dubirajara/django_my_ideas_wall/master/landscape.svg?style=flat)](https://landscape.io/github/dubirajara/django_my_ideas_wall/master)
 [![Coverage Status](https://coveralls.io/repos/github/dubirajara/django_my_ideas_wall/badge.svg?branch=master)](https://coveralls.io/github/dubirajara/django_my_ideas_wall?branch=master)
+[![Python 3](https://pyup.io/repos/github/dubirajara/django_my_ideas_wall/python-3-shield.svg)](https://pyup.io/repos/github/dubirajara/django_my_ideas_wall/)
+
 
 
 ##
