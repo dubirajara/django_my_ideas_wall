@@ -15,12 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from tweetme.tweets.api import views
+from myideas.core.api import views
 
 urlpatterns = [
-    url(r'^$', views.TweetListApiView.as_view(), name='list'),
-    # url(r'^(?P<pk>\d+)/$', views.TweetDetailView.as_view(), name='detail'),
-    # url(r'^(?P<pk>\d+)/update/$', views.TweetUpdateView.as_view(), name='update'),
-    # url(r'^(?P<pk>\d+)/delete/$', views.TweetDeleteView.as_view(), name='delete'),
-    # url(r'^create/$', views.TweetCreateView.as_view(), name='create')
+    url(r'^v1/list/', views.IdeasListApiView.as_view(), name='list-api'),
+
 ]

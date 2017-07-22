@@ -1,12 +1,10 @@
 from rest_framework import serializers
 
-from tweetme.accounts.api.serializers import UserDisplaySerializer
-from tweetme.tweets.models import Tweet
+from myideas.core.models import Ideas
 
 
-class TweetModelSerializer(serializers.ModelSerializer):
-    user = UserDisplaySerializer()
+class IdeasModelSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Tweet
-        fields = ('user', 'content')
+        model = Ideas
+        fields = ('user', 'title', 'description', 'likes', 'slug', 'tags', 'created_at')

@@ -1,11 +1,11 @@
 from rest_framework import generics
 
-from tweetme.tweets.models import Tweet
-from .serializers import TweetModelSerializer
+from myideas.core.models import Ideas
+from .serializers import IdeasModelSerializer
 
 
-class TweetListApiView(generics.ListAPIView):
-    serializer_class = TweetModelSerializer
+class IdeasListApiView(generics.ListAPIView):
+    serializer_class = IdeasModelSerializer
 
     def get_queryset(self):
-        return Tweet.objects.all()
+        return Ideas.objects.all()
