@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #Third-party apps
     'rest_framework',
     'registration',
     'crispy_forms',
