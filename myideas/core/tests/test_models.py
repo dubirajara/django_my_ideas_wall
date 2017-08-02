@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 from django.contrib.auth import get_user_model
@@ -38,6 +40,10 @@ class IdeasModelTest(TestCase):
     def test_ordering(self):
         """Check ordering to show"""
         self.assertListEqual(['-created_at'], Ideas._meta.ordering)
+
+    def test_create_at(self):
+        """Ideas must have an auto created_at attr."""
+        self.assertIsInstance(self.idea.created_at, datetime)
 
     def test_str(self):
         """Check __str__ return title field"""
