@@ -20,7 +20,7 @@ class ListApiTest(APITestCase):
             user=user, title='test app'
         )
 
-        self.response = self.client.get(r('list-api'))
+        self.response = self.client.get(r('list_api'))
 
     def test_api_get(self):
         """GET 'Ideas list api' must return status code 200"""
