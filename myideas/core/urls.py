@@ -4,7 +4,7 @@ from myideas.core import views
 
 urlpatterns = [
 
-    url(r'^ideas_form/', views.idea_create, name='ideas_form'),
+    url(r'^ideas_form/$', views.idea_create, name='ideas_form'),
     url(r'^(?P<slug>[\w-]+)/$', views.idea_details, name='idea_details'),
     url(r'^update/(?P<slug>[\w-]+)/$', views.idea_update, name='update'),
     url(r'^(?P<slug>[\w-]+)/delete/$', views.idea_delete, name='delete'),

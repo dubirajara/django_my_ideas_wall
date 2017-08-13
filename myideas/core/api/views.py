@@ -1,11 +1,9 @@
-from rest_framework import generics
+from rest_framework.generics import ListAPIView
 
 from myideas.core.models import Ideas
 from .serializers import IdeasModelSerializer
 
 
-class IdeasListApiView(generics.ListAPIView):
+class IdeasListApiView(ListAPIView):
     serializer_class = IdeasModelSerializer
-
-    def get_queryset(self):
-        return Ideas.objects.all()
+    queryset = Ideas.objects.all()
