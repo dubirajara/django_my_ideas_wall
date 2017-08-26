@@ -7,6 +7,6 @@ django-registration-redux==1.7
 -e git://github.com/dubirajara/django-tagulous#egg=django_tagulous
 djangorestframework==3.6.4
 gunicorn==19.7.1
-psycopg2==2.7.3
+psycopg2==2.7.3.1
 python-decouple==3.1
 social-auth-app-django==1.2.0
