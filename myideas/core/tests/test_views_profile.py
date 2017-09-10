@@ -12,13 +12,14 @@ class ProfileTest(TestCase):
         self.username = 'diego'
         self.email = 'test@djangoapp.com'
         self.password = 'test'
+        self.title = 'testando django'
         user = User.objects.create_user(
             self.username, self.email, self.password
         )
         self.client.login(
             username=self.username, password=self.password
         )
-        self.idea = Ideas.objects.create(user=user)
+        self.idea = Ideas.objects.create(user=user, title=self.title)
         self.response = self.client.get(r('profile', self.idea.user))
 
     def test_get(self):

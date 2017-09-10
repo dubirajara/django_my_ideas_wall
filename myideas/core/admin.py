@@ -4,7 +4,7 @@ from .models import Ideas
 
 
 class IdeasAdmin(admin.ModelAdmin):
-    list_display = ('user', 'title', 'created_at', 'tags')
+    list_display = ('id', 'user', 'title', 'created_at', 'tags')
     list_display_links = ('title',)
     model = Ideas
 
