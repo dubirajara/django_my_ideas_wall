@@ -37,7 +37,7 @@ class Ideas(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = self._get_unique_slug()
-        super(Ideas, self).save(**kwargs)
+        super(Ideas, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['-created_at']
