@@ -2,7 +2,7 @@ from django.db import models
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
-from django.utils.crypto import get_random_string
+
 
 import tagulous.models
 
@@ -25,10 +25,19 @@ class Ideas(models.Model):
         force_lowercase=True,
     )
 
+    def _get_unique_slug(self):
+        slug = slugify(self.title)
+        unique_slug = slug
+        num = 1
+        while Ideas.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(slug, num)
+            num += 1
+        return unique_slug
+
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title + '-' + str(self.user_id)
-                            + get_random_string(length=10))
-        super(Ideas, self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug = self._get_unique_slug()
+        super(Ideas, self).save(**kwargs)
 
     class Meta:
         ordering = ['-created_at']
@@ -43,5 +52,3 @@ class Ideas(models.Model):
 
     def get_api_like_url(self):
         return r('like_api', slug=self.slug)
-
-
