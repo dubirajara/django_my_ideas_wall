@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from myideas.core.api import views
+from myideas.api import views
 
 urlpatterns = [
     url(r'^v1/list/$', views.IdeasListApiView.as_view(), name='list_api'),
-
 ]

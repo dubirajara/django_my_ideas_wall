@@ -19,7 +19,7 @@ from myideas.core import views
 
 urlpatterns = [
     url(r'^ideas/', include('myideas.core.urls')),
-    url(r'^api/', include('myideas.core.api.urls')),
+    url(r'^api/', include('myideas.api.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
     url(r'^accounts/', include('registration.backends.default.urls')),
