@@ -19,8 +19,8 @@ from myideas.core import views
 
 urlpatterns = [
     url(r'^ideas/', include('myideas.core.urls')),
-    url(r'^api/', include('myideas.api.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^api/v1/list/', include('myideas.api.urls')),
+    url(r'^ideassecretadmin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),

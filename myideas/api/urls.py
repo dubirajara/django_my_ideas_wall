@@ -18,5 +18,6 @@ from django.conf.urls import url
 from myideas.api import views
 
 urlpatterns = [
-    url(r'^v1/list/$', views.IdeasListApiView.as_view(), name='list_api'),
+    url(r'^$', views.IdeasListApiView.as_view(), name='list_api'),
+    url(r'^(?P<pk>[0-9]+)/$', views.IdeasIdApiView.as_view(), name="id_api"),
 ]
