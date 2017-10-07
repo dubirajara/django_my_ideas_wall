@@ -22,7 +22,7 @@
                         {% endif %}
                         <h4 class="card-title">{{ idea.title }}</h4>
                         <h5 class="card-subtitle">By: {{ idea.user.username }}</h5>
-                        <p class="card-text">{{ idea.description|truncatewords:"20" }}</p>
+                        <p class="card-text">{{ idea.description|striptags|safe|truncatewords:"30" }}</p>
                           <br>
                         <br>
                           <p>

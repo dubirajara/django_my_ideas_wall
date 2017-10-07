@@ -19,7 +19,7 @@
                         <h5 class="card-subtitle">
                             By:<a href="{% url 'profile' idea.user.username %}"> {{ idea.user.username }}</a>
                         </h5>
-                        <p class="card-text">{{ idea.description|truncatewords:"20" }}</p>
+                        <p class="card-text">{{ idea.description|striptags|safe|truncatewords:"30" }}</p>
                         <br>
                         <br>
                           <p>
