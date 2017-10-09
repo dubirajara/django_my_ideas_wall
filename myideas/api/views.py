@@ -13,3 +13,5 @@ class IdeasListApiView(ListAPIView):
 class IdeasIdApiView(RetrieveAPIView):
     queryset = Ideas.objects.all()
     serializer_class = IdeasModelSerializer
+
+
