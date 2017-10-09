@@ -29,7 +29,7 @@
                             {{ ideas.user.username }}</a></small>
                         </h6>
                         <br>
-                        <p class="card-text text-justify">{{ ideas.description|safe|linebreaks }}</p><br>
+                        <p class="card-text text-justify">{{ ideas.description|safe|linebreaks|urlize }}</p><br>
                     <div style="text-align: center;">
                           <p>
                               {% if user.is_authenticated %}
