@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    restart: always
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./contrib/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data/
+
+  web:
+    restart: always
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && /code/contrib/start.sh"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+    volumes:
+      - .:/code
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
