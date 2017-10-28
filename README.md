@@ -13,6 +13,8 @@ Demo: https://shareideas.herokuapp.com
 
 ##
 
+## How Dev? Running locally(virtualenv):
+
 - Clone the repository:
 
 ```sh
@@ -46,6 +48,11 @@ python manage.py test
 
 #### Django + Posgresql + Gunicorn + Nginx  
 
+- Clone the repository:
+
+```sh
+git clone https://github.com/dubirajara/django_my_ideas_wall.git myideasapp && cd myideasapp
+```
 
 - Build and start services:
 
