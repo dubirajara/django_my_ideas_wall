@@ -44,9 +44,9 @@ python manage.py test
 
 ##
 
-## Using Docker to Development:
+## Using Docker to development:
 
-#### Django + Posgresql + Gunicorn + Nginx  
+#### Django + Postgresql + Gunicorn + Nginx  
 
 - Clone the repository:
 
