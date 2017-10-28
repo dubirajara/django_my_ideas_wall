@@ -1,4 +1,4 @@
-## Share Ideas - My Ideas Wall.
+# Share Ideas - My Ideas Wall.
 Web app developed using [Django](https://www.djangoproject.com).
 
 Demo: https://shareideas.herokuapp.com
@@ -39,3 +39,19 @@ python contrib/secret_gen.py
 python manage.py migrate
 python manage.py test
 ```
+
+##
+
+## Using Docker to Development:
+
+##### Django + Posgresql + Gunicorn + Nginx  
+
+
+- Build and start services:
+
+```sh
+docker-compose up -d --build
+
+```
+
+You can access it at: [localhost:8000](localhost:8000)
