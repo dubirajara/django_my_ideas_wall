@@ -54,4 +54,4 @@ docker-compose up -d --build
 
 ```
 
-You can access it at: [localhost:8000](localhost:8000)
+You can access it at: [`localhost:8000`](localhost:8000)
