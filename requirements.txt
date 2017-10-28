@@ -6,7 +6,6 @@ django-crispy-forms==1.7.0
 django-registration-redux==1.8
 -e git://github.com/dubirajara/django-tagulous#egg=django_tagulous
 djangorestframework==3.7.1
-docker-compose==1.16.1
 gunicorn==19.7.1
 psycopg2==2.7.3.2
 python-decouple==3.1
