@@ -12,7 +12,7 @@ CONFIG_STRING = """
 SECRET_KEY={}
 DEBUG=True
 ALLOWED_HOSTS=*
-DATABASE_URL=postgres://postgresuser:postgrespass@db:5432/ideasdb
+#DATABASE_URL=postgres://postgresuser:postgrespass@db:5432/ideasdb
 
 #EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 #EMAIL_HOST=localhost
