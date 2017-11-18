@@ -49,6 +49,8 @@
           {% if forloop.counter|divisibleby:5 and not forloop.last %}
         </div><br><div class="mbr-cards-row row striped">
       {% endif %}
+            {% empty %}
+                        <p style="text-align: center; padding-top: 180px; padding-bottom: 60px;">This tag does not exist!</p>
     {% endfor %}
     </div>
 </section>
