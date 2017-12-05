@@ -11,7 +11,7 @@ class LikeIdeasMixin(object):
         user = self.request.user
         updated = False
         liked = False
-        if user.is_authenticated():
+        if user.is_authenticated:
             if user in obj.likes.all():
                 liked = False
                 obj.likes.remove(user)

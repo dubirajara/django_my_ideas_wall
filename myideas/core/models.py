@@ -8,7 +8,7 @@ import tagulous.models
 
 
 class Ideas(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=60)
     description = models.TextField()
     likes = models.ManyToManyField(User,
