@@ -13,17 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import path, include
 from django.contrib import admin
 from myideas.core import views
 
 urlpatterns = [
-    url(r'^ideas/', include('myideas.core.urls')),
-    url(r'^api/v1/list/', include('myideas.api.urls')),
-    url(r'^ideassecretadmin/', admin.site.urls),
-    url(r'^$', views.home, name='home'),
-    url(r'^accounts/', include('registration.backends.default.urls')),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    path('ideas/', include('myideas.core.urls')),
+    path('api/v1/list/', include('myideas.api.urls')),
+    path('ideassecretadmin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('accounts/', include('registration.backends.default.urls')),
+    path('oauth', include('social_django.urls', namespace='social')),
 ]
 
 admin.site.site_header = 'Ideas Webapp Admin'

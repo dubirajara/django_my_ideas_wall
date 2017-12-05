@@ -1,14 +1,14 @@
-from django.conf.urls import url
+from django.urls import path
 
 from myideas.core import views
 
 urlpatterns = [
 
-    url(r'^ideas_form/$', views.idea_create, name='ideas_form'),
-    url(r'^(?P<slug>[\w-]+)/$', views.idea_details, name='idea_details'),
-    url(r'^update/(?P<slug>[\w-]+)/$', views.idea_update, name='update'),
-    url(r'^(?P<slug>[\w-]+)/delete/$', views.idea_delete, name='delete'),
-    url(r'^api/(?P<slug>[\w-]+)/like/$', views.IdeaLikeAPI.as_view(), name='like_api'),
-    url(r'^profile/(\w+)/$', views.profile, name='profile'),
-    url(r'^by_tags/(?P<tags>[\w-]+)/$', views.by_tags, name='by_tags'),
+    path('ideas_form/', views.idea_create, name='ideas_form'),
+    path('<slug:slug>/', views.idea_details, name='idea_details'),
+    path('update/<slug:slug>/', views.idea_update, name='update'),
+    path('<slug:slug>/delete/', views.idea_delete, name='delete'),
+    path('api/<slug:slug>/like/', views.IdeaLikeAPI.as_view(), name='like_api'),
+    path('profile/<username>/', views.profile, name='profile'),
+    path('by_tags/<tags>/', views.by_tags, name='by_tags'),
 ]
