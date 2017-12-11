@@ -19,5 +19,5 @@ from myideas.api import views
 
 urlpatterns = [
     path('', views.IdeasListApiView.as_view(), name='list_api'),
-    path(r'<int:pk>', views.IdeasIdApiView.as_view(), name="id_api"),
+    path('<int:pk>', views.IdeasIdApiView.as_view(), name="id_api"),
 ]
