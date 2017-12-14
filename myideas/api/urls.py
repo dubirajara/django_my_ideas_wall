@@ -20,4 +20,5 @@ from myideas.api import views
 urlpatterns = [
     path('', views.IdeasListApiView.as_view(), name='list_api'),
     path('<int:pk>', views.IdeasIdApiView.as_view(), name="id_api"),
+    path('profile/<username>', views.IdeasUserListApiView.as_view()),
 ]
