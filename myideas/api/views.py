@@ -13,15 +13,3 @@ class IdeasListApiView(ListAPIView):
 class IdeasIdApiView(RetrieveAPIView):
     queryset = Ideas.objects.all()
     serializer_class = IdeasModelSerializer
-
-
-class IdeasUserListApiView(ListAPIView):
-    serializer_class = IdeasModelSerializer
-
-    def get_queryset(self):
-
-        queryset = Ideas.objects.all()
-        username = self.request.query_params.get('user', None)
-        if username is not None:
-            queryset = queryset.filter(ideas__username=username)
-        return queryset
