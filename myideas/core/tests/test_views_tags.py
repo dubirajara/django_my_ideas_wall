@@ -28,7 +28,7 @@ class IdeaTagsTest(TestCase):
         self.assertEqual(200, self.response.status_code)
 
     def test_template(self):
-        """'Ideas tags' must use template ideas_details.html and base.html"""
+        """'Ideas tags' must use template by_tags.html and base.html"""
         self.assertTemplateUsed(self.response, 'by_tags.html')
         self.assertTemplateUsed(self.response, 'base.html')
 
