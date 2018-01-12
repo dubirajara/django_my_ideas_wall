@@ -55,8 +55,8 @@ git clone https://github.com/dubirajara/django_my_ideas_wall.git myideasapp && c
 ```  
 - Set up your Postgresql configuration file:
 
-> Before run the docker container, you must configure your data base name, user and password in file **contrib/docker-entrypoint-initdb.d/init_db.sh** and uncomment and config too the line 15 "*DATABASE_URL=*" in file **contrib/secret_gen.py**  
-
+> Before run the docker container, you must uncomment the line 15 "*DATABASE_URL=*" in file **contrib/secret_gen.py**  
+>And if you want config it , change the data to your database config, and too in file **contrib/docker-entrypoint-initdb.d/init_db.sh**
 
 - Build and start services:
 
