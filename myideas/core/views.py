@@ -103,6 +103,6 @@ def profile(request, username):
 
 
 # thanks the snippet video tutorial django likes: https://www.youtube.com/watch?v=pkPRtQf6oQ8
-class IdeaLikeAPI(APIView, LikeIdeasMixin):
+class IdeaLikeAPI(LikeIdeasMixin, APIView):
     authentication_classes = (authentication.SessionAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
