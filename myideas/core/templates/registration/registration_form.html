@@ -17,21 +17,21 @@
   </a><br><br>
           <strong>OR</strong>
               <hr/>
-    </p>
 <h3>Register:</h3><br>
 <form method="post" action=".">
   {% csrf_token %}
   {{ form|crispy }}
 
-  <input class='btn btn-block btn-primary' type="submit" value="Join" />
+  <input class='btn btn-block btn-primary' type="submit" value="Join" id="recaptcha-submit" />
 </form>
 </div>
 </div>
 
-<hr/>
+
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-3 text-align-center'>
 <p>Need to <a href="{% url 'auth_login' %}">Login</a>?</p>
+    <hr/>
 </div>
 </div>
 
