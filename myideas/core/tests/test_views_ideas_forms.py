@@ -1,7 +1,12 @@
+import os
+
 from django.test import TestCase
 from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
+from django.forms import Form
+
+from captcha import fields
 
 from myideas.core.models import Ideas
 from myideas.core.forms import IdeasForm
@@ -52,3 +57,26 @@ class IdeaFormTest(TestCase):
         resp_post = self.client.post(r('ideas_form'), data)
         self.assertEqual(302, resp_post.status_code)
         self.assertRedirects(resp_post, r('home'))
+
+
+class RecaptchaForm(Form):
+    captcha = fields.ReCaptchaField()
+
+
+class TestRecaptcha(TestCase, Form):
+    def setUp(self):
+        os.environ['RECAPTCHA_TESTING'] = 'True'
+
+    def test_envvar_enabled(self):
+        form_params = {'g-recaptcha-response': 'PASSED'}
+        form = RecaptchaForm(form_params)
+        self.assertTrue(form.is_valid())
+
+    def test_envvar_disabled(self):
+        os.environ['RECAPTCHA_TESTING'] = 'False'
+        form_params = {'g-recaptcha-response': 'PASSED'}
+        form = RecaptchaForm(form_params)
+        self.assertFalse(form.is_valid())
+
+    def tearDown(self):
+        del os.environ['RECAPTCHA_TESTING']
