@@ -20,7 +20,7 @@ class UserListIdApiView(ListAPIView):
 
     def get_queryset(self):
         queryset = Ideas.objects.all()
-        username = self.request.query_params.get('username', None)
+        username = self.request.query_params.get('username')
         if username is not None:
             queryset = queryset.filter(user__username=username)
             return queryset

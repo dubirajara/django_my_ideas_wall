@@ -61,8 +61,11 @@ class ListApiTest(APITestCase):
 
     def test_api_user_get(self):
         """GET 'Ideas id list user' must return status code 200"""
-        self.response.user = self.client.get(r('user_api', 'user__username='+ self.idea.user.username))
+        self.response.user = self.client.get(r('user_api', 'user?username='+ self.idea.user.username))
         self.assertEqual(status.HTTP_200_OK, self.response.user.status_code)
+        username = 'diego'
+        if username is not None:
+            self.assertIn(Ideas.objects.get().user.username, username)
 
     def test_user_html(self):
         """Test returns json contents"""
