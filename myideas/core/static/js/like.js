@@ -7,7 +7,7 @@
      $(document).ready(function(){
           function updateText(btn, newCount){
           btn.attr("data-likes", newCount)
-          btn.html(newCount + " " + '<i class="fa fa-thumbs-up"></i')
+          btn.html(newCount + " " + '<i class="fa fa-thumbs-up"></i>')
       }
 
       $(".like-btn").click(function(e){
