@@ -6,7 +6,7 @@ django-crispy-forms==1.7.2
 django-registration-redux==2.2
 django-recaptcha==1.4.0
 -e git://github.com/dubirajara/django-tagulous#egg=django_tagulous
-djangorestframework==3.8.0
+djangorestframework==3.8.1
 gunicorn==19.7.1
 psycopg2==2.7.4
 python-decouple==3.1
