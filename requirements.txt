@@ -7,7 +7,7 @@ django-registration-redux==2.4
 django-recaptcha==1.4.0
 -e git://github.com/dubirajara/django-tagulous#egg=django_tagulous
 djangorestframework==3.8.2
-gunicorn==19.8.0
+gunicorn==19.8.1
 psycopg2==2.7.4
 python-decouple==3.1
 social-auth-app-django==2.1.0
