@@ -13,7 +13,7 @@ services:
   web:
     restart: always
     build: .
-    command: bash -c "python contrib/secret_gen.py && python manage.py migrate && python manage.py collectstatic --noinput && /code/contrib/start.sh"
+    command: bash -c "python contrib/secret_gen.py && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py test && /code/contrib/start.sh"
     volumes:
       - .:/code
     ports:
