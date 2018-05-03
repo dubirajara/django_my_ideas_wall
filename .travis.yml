@@ -7,7 +7,7 @@ addons:
 env:
    - DATABASE_URL=postgres://postgres@localhost/ideasdb
 install:
-  - pip install -q -r requirements.txt
+  - pip install -q -r requirements-dev.txt
 before_script:
   - python contrib/secret_gen.py
   - psql -c "CREATE DATABASE ideasdb;" -U postgres
@@ -15,6 +15,7 @@ before_script:
   - python manage.py collectstatic --no-input
 script:
   - coverage run --source='myideas' manage.py test
+  - flake8
 before_install:
   - pip install coveralls
 after_success:
