@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myideas.api',
 
-    #Third-party apps
+    # Third-party apps
     'rest_framework',
     'registration',
     'crispy_forms',

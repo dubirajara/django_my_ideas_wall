@@ -40,8 +40,10 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255, unique=True)),
                 ('slug', models.SlugField()),
-                ('count', models.IntegerField(default=0, help_text='Internal counter of how many times this tag is in use')),
-                ('protected', models.BooleanField(default=False, help_text='Will not be deleted when the count reaches 0')),
+                ('count', models.IntegerField(default=0,
+                                              help_text='Internal counter of how many times this tag is in use')),
+                ('protected', models.BooleanField(default=False,
+                                                  help_text='Will not be deleted when the count reaches 0')),
             ],
             options={
                 'ordering': ('name',),
