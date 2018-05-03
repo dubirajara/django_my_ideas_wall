@@ -30,7 +30,7 @@ source .venv/bin/activate
 
 - Install the dependencies:
 ```sh
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 ```
 - Set up your local configuration file .env:
 ```sh
