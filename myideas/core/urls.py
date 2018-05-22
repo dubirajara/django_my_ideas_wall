@@ -11,4 +11,5 @@ urlpatterns = [
     path('api/<slug:slug>/like/', views.IdeaLikeAPI.as_view(), name='like_api'),
     path('profile/<username>/', views.profile, name='profile'),
     path('by_tags/<tags>/', views.by_tags, name='by_tags'),
+    # path('by_tags/<tags>/', views.by_tags, name='by_tags')
 ]

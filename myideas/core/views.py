@@ -106,3 +106,6 @@ def profile(request, username):
 class IdeaLikeAPI(LikeIdeasMixin, APIView):
     authentication_classes = (authentication.SessionAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
+
+
+# by_tags = TagsIdeasMixin.as_view()

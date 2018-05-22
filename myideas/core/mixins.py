@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 from rest_framework.response import Response
 
@@ -24,3 +24,13 @@ class LikeIdeasMixin(object):
             "liked": liked
         }
         return Response(data)
+
+
+# class TagsIdeasMixin(View):
+#     def get(self, request, tags):
+#         queryset = Ideas.objects.filter(tags=tags)
+#
+#         context = {
+#             'queryset': queryset
+#         }
+#         return render(request, 'by_tags.html', context)
