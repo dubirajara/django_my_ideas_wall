@@ -3,13 +3,13 @@
 """
 Django SECRET_KEY generator.
 """
-from django.utils.crypto import get_random_string
+from django.core.management import utils
 
 
-chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+chars = utils.get_random_secret_key()
 
-CONFIG_STRING = """
-SECRET_KEY={}
+CONFIG_STRING = f"""
+SECRET_KEY={utils.get_random_secret_key()}
 DEBUG=True
 ALLOWED_HOSTS=*
 #DATABASE_URL=postgres://postgresuser:postgrespass@db:5432/ideasdb
@@ -40,7 +40,7 @@ SOCIAL_AUTH_TWITTER_SECRET=
 #DJANGO RECAPTCHA
 RECAPTCHA_PUBLIC_KEY=
 RECAPTCHA_PRIVATE_KEY=
-""".strip().format(get_random_string(50, chars))
+"""
 
 # Writing our configuration file to '.env'
 with open('myideas/.env', 'w') as configfile:
