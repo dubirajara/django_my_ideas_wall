@@ -9,7 +9,7 @@ env:
 install:
   - pip install -q -r requirements-dev.txt
 before_script:
-  - python contrib/secret_gen.py
+  - python contrib/config_env.py
   - psql -c "CREATE DATABASE ideasdb;" -U postgres
   - python manage.py migrate
   - python manage.py collectstatic --no-input
