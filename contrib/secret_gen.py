@@ -6,9 +6,7 @@ Django SECRET_KEY generator.
 from django.core.management import utils
 
 
-chars = utils.get_random_secret_key()
-
-CONFIG_STRING = f"""
+CONFIG_ENV = f"""
 SECRET_KEY={utils.get_random_secret_key()}
 DEBUG=True
 ALLOWED_HOSTS=*
@@ -44,5 +42,5 @@ RECAPTCHA_PRIVATE_KEY=
 
 # Writing our configuration file to '.env'
 with open('myideas/.env', 'w') as configfile:
-    configfile.write(CONFIG_STRING)
+    configfile.write(CONFIG_ENV)
     print('Created the .env file successfully.')
