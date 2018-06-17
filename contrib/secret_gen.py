@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-
-"""
-Django SECRET_KEY generator.
-"""
 from django.core.management import utils
 
 
