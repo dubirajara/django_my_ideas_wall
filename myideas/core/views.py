@@ -98,7 +98,6 @@ def profile(request, username):
         'username': user,
         'ideas': queryset,
     }
-
     return render(request, 'profile.html', context)
 
 
