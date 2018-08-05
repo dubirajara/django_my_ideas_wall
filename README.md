@@ -34,7 +34,7 @@ pip install -r requirements-dev.txt
 ```
 - Set up your local configuration file .env:
 ```sh
-python contrib/secret_gen.py
+python contrib/config_env.py
 ```
 - Run the migrations and run tests:
 ```sh
