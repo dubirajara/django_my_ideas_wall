@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 
-from myideas.core.models import Ideas
+from myideas.core.models import Idea
 
 
 class LikeApiTest(APITestCase):
@@ -18,7 +18,7 @@ class LikeApiTest(APITestCase):
         user = User.objects.create_user(
             self.username, self.email, self.password
         )
-        self.idea = Ideas.objects.create(
+        self.idea = Idea.objects.create(
             user=user, title='test app'
         )
 
@@ -30,7 +30,7 @@ class LikeApiTest(APITestCase):
         self.get_json = json.loads(self.response.content.decode('utf-8'))
 
     def test_api_get(self):
-        """GET 'Ideas like api' must return status code 200"""
+        """GET 'Idea like api' must return status code 200"""
         self.api_signin_and_get()
         self.assertEqual(status.HTTP_200_OK, self.response.status_code)
 

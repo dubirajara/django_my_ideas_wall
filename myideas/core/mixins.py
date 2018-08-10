@@ -2,12 +2,12 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework.response import Response
 
-from myideas.core.models import Ideas
+from myideas.core.models import Idea
 
 
 class LikeIdeasMixin(object):
     def get(self, request, slug=None):
-        obj = get_object_or_404(Ideas, slug=slug)
+        obj = get_object_or_404(Idea, slug=slug)
         user = self.request.user
         updated = False
         liked = False

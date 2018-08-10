@@ -8,7 +8,7 @@ from django.forms import Form
 
 from captcha import fields
 
-from myideas.core.models import Ideas
+from myideas.core.models import Idea
 from myideas.core.forms import IdeasForm
 
 
@@ -50,7 +50,7 @@ class IdeaFormTest(TestCase):
         self.client.login(
             username=self.username, password=self.password
         )
-        self.idea = Ideas.objects.create(
+        self.idea = Idea.objects.create(
             user=user, title='test app'
         )
         data = {'title': 'Test text', 'description': 'Test text'}

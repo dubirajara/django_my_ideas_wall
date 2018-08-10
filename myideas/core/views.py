@@ -8,13 +8,13 @@ from rest_framework import authentication, permissions
 
 from registration.forms import User
 
-from .models import Ideas
+from .models import Idea
 from .forms import IdeasForm, IdeasFormUpdate
 from .mixins import LikeIdeasMixin
 
 
 def home(request):
-    queryset = Ideas.objects.all()
+    queryset = Idea.objects.all()
     context = {
         'ideas': queryset,
     }
@@ -23,7 +23,7 @@ def home(request):
 
 
 def idea_details(request, slug):
-    ideas = get_object_or_404(Ideas, slug=slug)
+    ideas = get_object_or_404(Idea, slug=slug)
 
     context = {
         'ideas': ideas,
@@ -53,7 +53,7 @@ def idea_create(request):
 
 
 def idea_update(request, slug=None):
-    instance = get_object_or_404(Ideas, slug=slug)
+    instance = get_object_or_404(Idea, slug=slug)
     form = IdeasFormUpdate(request.POST or None, instance=instance)
     if request.user == instance.user:
         if form.is_valid():
@@ -70,7 +70,7 @@ def idea_update(request, slug=None):
 
 
 def idea_delete(request, slug=None):
-    instance = get_object_or_404(Ideas, slug=slug)
+    instance = get_object_or_404(Idea, slug=slug)
     if request.user == instance.user:
         instance.delete()
         return HttpResponseRedirect(reverse(
@@ -81,7 +81,7 @@ def idea_delete(request, slug=None):
 
 
 def by_tags(request, tags):
-    queryset = Ideas.objects.filter(tags=tags)
+    queryset = Idea.objects.filter(tags=tags)
 
     context = {
         'queryset': queryset
@@ -92,7 +92,7 @@ def by_tags(request, tags):
 
 def profile(request, username):
     user = get_object_or_404(User.objects, username=username)
-    queryset = Ideas.objects.filter(user=user)
+    queryset = Idea.objects.filter(user=user)
 
     context = {
         'username': user,

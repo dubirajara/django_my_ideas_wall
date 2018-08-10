@@ -7,7 +7,7 @@ from django.template.defaultfilters import slugify
 import tagulous.models
 
 
-class Ideas(models.Model):
+class Idea(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=60)
     description = models.TextField()
@@ -29,7 +29,7 @@ class Ideas(models.Model):
         slug = slugify(self.title)
         unique_slug = slug
         num = 1
-        while Ideas.objects.filter(slug=unique_slug).exists():
+        while Idea.objects.filter(slug=unique_slug).exists():
             unique_slug = f'{slug}-{num}'
             num += 1
         return unique_slug
@@ -37,7 +37,7 @@ class Ideas(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = self._get_unique_slug()
-        super(Ideas, self).save(*args, **kwargs)
+        super(Idea, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['-created_at']

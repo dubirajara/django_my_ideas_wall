@@ -3,7 +3,7 @@ from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
-from myideas.core.models import Ideas
+from myideas.core.models import Idea
 
 
 class ProfileTest(TestCase):
@@ -19,7 +19,7 @@ class ProfileTest(TestCase):
         self.client.login(
             username=self.username, password=self.password
         )
-        self.idea = Ideas.objects.create(user=user, title=self.title)
+        self.idea = Idea.objects.create(user=user, title=self.title)
         self.response = self.client.get(r('profile', self.idea.user))
 
     def test_get(self):

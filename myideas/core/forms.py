@@ -4,18 +4,18 @@ from captcha.fields import ReCaptchaField
 from registration.forms import RegistrationForm
 
 
-from .models import Ideas
+from .models import Idea
 
 
 class IdeasForm(forms.ModelForm):
     class Meta:
-        model = Ideas
+        model = Idea
         fields = ('title', 'description', 'tags')
 
 
 class IdeasFormUpdate(forms.ModelForm):
     class Meta:
-        model = Ideas
+        model = Idea
         fields = ('title', 'description', 'tags')
 
 

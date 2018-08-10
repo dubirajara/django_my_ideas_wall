@@ -3,7 +3,7 @@ from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
-from myideas.core.models import Ideas
+from myideas.core.models import Idea
 
 
 class IdeaUpdateform(TestCase):
@@ -18,7 +18,7 @@ class IdeaUpdateform(TestCase):
         self.login = self.client.login(
             username=self.username, password=self.password
         )
-        self.idea = Ideas.objects.create(
+        self.idea = Idea.objects.create(
             user=user, title='test app', description='test app django'
         )
         self.response = self.client.get(r('update', self.idea.slug))
@@ -44,6 +44,6 @@ class IdeaUpdateform(TestCase):
         """'Update Form post must be redirect to details"""
         data = {'title': self.idea.title, 'description': self.idea.description}
         resp_post = self.client.post(r('update', self.idea.slug), data)
-        idea = Ideas.objects.get()
+        idea = Idea.objects.get()
         self.assertEqual(302, resp_post.status_code)
         self.assertRedirects(resp_post, r(idea.get_absolute_url()))

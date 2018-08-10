@@ -3,7 +3,7 @@ from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
-from myideas.core.models import Ideas
+from myideas.core.models import Idea
 
 
 class DetailsTest(TestCase):
@@ -16,7 +16,7 @@ class DetailsTest(TestCase):
             self.username, self.email, self.password
         )
 
-        self.idea = Ideas.objects.create(
+        self.idea = Idea.objects.create(
             user=user, title='test app', tags='django'
         )
         self.response = self.client.get(r(self.idea.get_absolute_url()))
@@ -27,11 +27,11 @@ class DetailsTest(TestCase):
         )
 
     def test_get(self):
-        """GET 'Ideas Details' must return status code 200"""
+        """GET 'Idea Details' must return status code 200"""
         self.assertEqual(200, self.response.status_code)
 
     def test_template(self):
-        """'Ideas Details' must use template ideas_details.html and base.html"""
+        """'Idea Details' must use template ideas_details.html and base.html"""
         self.assertTemplateUsed(self.response, 'ideas_details.html')
         self.assertTemplateUsed(self.response, 'base.html')
 
@@ -65,9 +65,9 @@ class DetailsTest(TestCase):
                 self.assertContains(self.response, expected)
 
     def test_context(self):
-        """Ideas must be in context"""
+        """Idea must be in context"""
         ideas = self.response.context['ideas']
-        self.assertIsInstance(ideas, Ideas)
+        self.assertIsInstance(ideas, Idea)
 
     def not_found(self):
         self.resp = self.client.get(r(

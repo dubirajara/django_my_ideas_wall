@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
-from myideas.core.models import Ideas
+from myideas.core.models import Idea
 
 
 class HomeTest(TestCase):
@@ -15,7 +15,7 @@ class HomeTest(TestCase):
         user = User.objects.create_user(
             self.username, self.email, self.password
         )
-        self.idea = Ideas.objects.create(
+        self.idea = Idea.objects.create(
             user=user, title='test app', tags='django'
         )
 

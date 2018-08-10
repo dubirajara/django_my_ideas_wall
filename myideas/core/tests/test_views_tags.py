@@ -3,7 +3,7 @@ from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
-from myideas.core.models import Ideas
+from myideas.core.models import Idea
 
 
 class IdeaTagsTest(TestCase):
@@ -18,7 +18,7 @@ class IdeaTagsTest(TestCase):
         self.client.login(
             username=self.username, password=self.password
         )
-        self.idea = Ideas.objects.create(
+        self.idea = Idea.objects.create(
             user=user, title='test app', tags='django'
         )
         self.response = self.client.get(r('by_tags', self.idea.tags))
@@ -61,7 +61,7 @@ class IdeasDeleteTest(TestCase):
         self.login = self.client.login(
             username=self.username, password=self.password
         )
-        self.idea = Ideas.objects.create(
+        self.idea = Idea.objects.create(
             user=user, title='test app'
         )
         self.response = self.client.post(r('delete', self.idea.slug))
@@ -72,7 +72,7 @@ class IdeasDeleteTest(TestCase):
 
     def test_delete(self):
         """Check models data delete"""
-        self.assertFalse(Ideas.objects.exists())
+        self.assertFalse(Idea.objects.exists())
 
     def test_post_redirect(self):
         """delete ideas must redirect to profile page"""
