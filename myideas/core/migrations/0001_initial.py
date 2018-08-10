@@ -54,7 +54,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='idea',
             name='tags',
-            field=tagulous.models.fields.TagField(_set_tag_meta=True, blank=True, force_lowercase=True, help_text='Enter a comma-separated tag string', max_count=5, to='core.Tagulous_Idea_tags'),
+            field=tagulous.models.fields.TagField(_set_tag_meta=True, blank=True, force_lowercase=True,
+                                                  help_text='Enter a comma-separated tag string', max_count=5,
+                                                  to='core.Tagulous_Idea_tags'),
         ),
         migrations.AddField(
             model_name='idea',
