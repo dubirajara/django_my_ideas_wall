@@ -40,8 +40,8 @@ class DetailsTest(TestCase):
         self.api_signin_and_get()
         response = self.client.get(r(self.idea.get_absolute_url()))
         contents = [
-            'href="{}"'.format(r('update', self.idea.slug)),
-            'href="{}"'.format(r('delete', self.idea.slug)),
+            f'href="{r("update", self.idea.slug)}"',
+            f'href="{r("delete", self.idea.slug)}"',
         ]
         for expected in contents:
             with self.subTest():
@@ -55,8 +55,8 @@ class DetailsTest(TestCase):
     def test_links(self):
         """Details contains tags/twitter/fb and disqus thread links"""
         contents = [
-            'href="{}"'.format(r('by_tags', self.idea.tags)),
-            'href="{}"'.format(r('https://twitter.com/share')),
+            f'href="{r("by_tags", self.idea.tags)}"',
+            f'href="{r("https://twitter.com/share")}"',
             'fb-share-button',
             'disqus_thread'
         ]
