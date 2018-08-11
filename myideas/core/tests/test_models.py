@@ -10,9 +10,9 @@ from myideas.core.models import Idea
 
 class IdeaModelTest(TestCase):
     def setUp(self):
-        user = get_user_model().objects.create(username='diego')
+        self.user = get_user_model().objects.create(username='diego')
         self.idea = Idea.objects.create(
-                user=user,
+                user=self.user,
                 title='django app',
                 description='test django web app',
                 slug=slugify('django app'),
@@ -34,6 +34,7 @@ class IdeaModelTest(TestCase):
         self.assertTrue(field.blank)
 
     def test_slug_null(self):
+        """Check slug field can be null"""
         field = Idea._meta.get_field('slug')
         self.assertTrue(field.null)
 
@@ -48,3 +49,7 @@ class IdeaModelTest(TestCase):
     def test_str(self):
         """Check __str__ return title field"""
         self.assertEqual('django app', str(self.idea))
+
+    def test_unique_slug(self):
+        """Check method generate unique slug url"""
+        self.assertEqual('django-app-1', Idea._get_unique_slug(self.idea))
