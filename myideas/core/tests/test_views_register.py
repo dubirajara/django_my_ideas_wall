@@ -1,5 +1,10 @@
+import os
+
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
+from django.forms import Form
+
+from captcha import fields
 
 
 class RegisterUserAdmin(TestCase):
@@ -34,3 +39,26 @@ class RegisterUserAdmin(TestCase):
         self.assertTemplateUsed(response,
                                 'registration/password_reset_complete.html')
         self.assertTemplateUsed(response, 'base.html')
+
+
+class RecaptchaForm(Form):
+    captcha = fields.ReCaptchaField()
+
+
+class TestRecaptcha(TestCase, Form):
+    def setUp(self):
+        os.environ['RECAPTCHA_TESTING'] = 'True'
+
+    def test_envvar_enabled(self):
+        form_params = {'g-recaptcha-response': 'PASSED'}
+        form = RecaptchaForm(form_params)
+        self.assertTrue(form.is_valid())
+
+    def test_envvar_disabled(self):
+        os.environ['RECAPTCHA_TESTING'] = 'False'
+        form_params = {'g-recaptcha-response': 'PASSED'}
+        form = RecaptchaForm(form_params)
+        self.assertFalse(form.is_valid())
+
+    def tearDown(self):
+        del os.environ['RECAPTCHA_TESTING']
