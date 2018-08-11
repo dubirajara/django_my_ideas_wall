@@ -25,20 +25,6 @@ class Idea(models.Model):
         force_lowercase=True,
     )
 
-    def _get_unique_slug(self):
-        slug = slugify(self.title)
-        unique_slug = slug
-        num = 1
-        while Idea.objects.filter(slug=unique_slug).exists():
-            unique_slug = f'{slug}-{num}'
-            num += 1
-        return unique_slug
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = self._get_unique_slug()
-        super(Idea, self).save(*args, **kwargs)
-
     class Meta:
         ordering = ['-created_at']
         verbose_name = 'My Idea'
@@ -47,8 +33,22 @@ class Idea(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self._get_unique_slug()
+        super(Idea, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
         return r('idea_details', slug=self.slug)
 
     def get_api_like_url(self):
         return r('like_api', slug=self.slug)
+
+    def _get_unique_slug(self):
+        slug = slugify(self.title)
+        unique_slug = slug
+        num = 1
+        while Idea.objects.filter(slug=unique_slug).exists():
+            unique_slug = f'{slug}-{num}'
+            num += 1
+        return unique_slug
