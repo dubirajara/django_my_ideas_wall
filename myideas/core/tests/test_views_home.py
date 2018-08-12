@@ -39,10 +39,10 @@ class HomeTest(TestCase):
     def test_nav_links(self):
         """base.html nav bar must contains idea_forms/home/login/register links"""
         contents = (
-            'href="{}"'.format(r('ideas_form')),
-            'href="{}"'.format(r('home')),
-            'href="{}"'.format(r('auth_login')),
-            'href="{}"'.format(r('registration_register')),
+            f'href="{r("ideas_form")}"',
+            f'href="{r("home")}"',
+            f'href="{r("auth_login")}"',
+            f'href="{r("registration_register")}"'
         )
         for expected in contents:
             with self.subTest():
@@ -53,10 +53,10 @@ class HomeTest(TestCase):
         self.signin_and_get()
         contents = (
             self.idea.user,
-            'href="{}"'.format(r('ideas_form')),
-            'href="{}"'.format(r('home')),
-            'href="{}"'.format(r('auth_logout')),
-            'href="{}"'.format(r('profile', self.idea.user)),
+            f'href="{r("ideas_form")}"',
+            f'href="{r("home")}"',
+            f'href="{r("auth_logout")}"',
+            f'href="{r("profile", self.idea.user)}"'
         )
         for expected in contents:
             with self.subTest():
@@ -65,9 +65,9 @@ class HomeTest(TestCase):
     def test_details_profile_tags_link(self):
         """home contains details/profile/tags links"""
         contents = (
-            'href="{}"'.format(r('idea_details', self.idea.slug)),
-            'href="{}"'.format(r('profile', self.idea.user)),
-            'href="{}"'.format(r('by_tags', self.idea.tags))
+            f'href="{r("idea_details", self.idea.slug)}"',
+            f'href="{r("profile", self.idea.user)}"',
+            f'href="{r("by_tags", self.idea.tags)}"'
         )
         for expected in contents:
             with self.subTest():
