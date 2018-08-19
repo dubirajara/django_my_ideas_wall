@@ -29,7 +29,7 @@ class IdeaModelTest(TestCase):
 
     def test_should_return_attributes(self):
         """Models fields must returns attributes"""
-        contents = ['user', 'title', 'description', 'likes', 'slug', 'created_at', 'tags']
+        contents = ('user', 'title', 'description', 'likes', 'slug', 'created_at', 'tags')
 
         for expected in contents:
             with self.subTest():
