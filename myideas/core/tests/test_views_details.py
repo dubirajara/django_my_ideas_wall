@@ -39,10 +39,10 @@ class DetailsTest(TestCase):
         """Details contains update/delete links"""
         self.api_signin_and_get()
         response = self.client.get(r(self.idea.get_absolute_url()))
-        contents = [
+        contents = (
             f'href="{r("update", self.idea.slug)}"',
             f'href="{r("delete", self.idea.slug)}"',
-        ]
+        )
         for expected in contents:
             with self.subTest():
                 self.assertContains(response, expected)
@@ -54,12 +54,12 @@ class DetailsTest(TestCase):
 
     def test_links(self):
         """Details contains tags/twitter/fb and disqus thread links"""
-        contents = [
+        contents = (
             f'href="{r("by_tags", self.idea.tags)}"',
             f'href="{r("https://twitter.com/share")}"',
             'fb-share-button',
             'disqus_thread'
-        ]
+        )
         for expected in contents:
             with self.subTest():
                 self.assertContains(self.response, expected)
