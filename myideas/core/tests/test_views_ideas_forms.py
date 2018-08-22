@@ -24,10 +24,10 @@ class IdeaFormTest(TestCase):
         self.assertTemplateUsed(self.response, 'base.html')
 
     def test_html(self):
-        contents = [
+        contents = (
             'To share your idea you have to be logged in',
-            'href="{}"'.format(r('auth_login')),
-        ]
+            f'href="{r("auth_login")}"',
+        )
 
         for expected in contents:
             with self.subTest():
