@@ -34,8 +34,8 @@ class ProfileTest(TestCase):
     def test_update_and_delete_link(self):
         """profile contains update/delete links"""
         contents = (
-            'href="{}"'.format(r('update', self.idea.slug)),
-            'href="{}"'.format(r('delete', self.idea.slug)),
+            f'href="{r("update", self.idea.slug)}"',
+            f'href="{r("delete", self.idea.slug)}"',
         )
         for expected in contents:
             with self.subTest():
