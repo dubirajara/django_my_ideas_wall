@@ -34,10 +34,10 @@ class IdeaTagsTest(TestCase):
 
     def test_update_and_delete_link(self):
         """Details contains update/delete links"""
-        contents = [
-            'href="{}"'.format(r('update', self.idea.slug)),
-            'href="{}"'.format(r('delete', self.idea.slug)),
-        ]
+        contents = (
+            f'href="{r("update", self.idea.slug)}"',
+            f'href="{r("delete", self.idea.slug)}"',
+        )
         for expected in contents:
             with self.subTest():
                 self.assertContains(self.response, expected)
