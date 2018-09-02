@@ -21,7 +21,7 @@ Demo: https://shareideas.herokuapp.com
 git clone https://github.com/dubirajara/django_my_ideas_wall.git myideasapp && cd myideasapp
 ```
 
-- Create and activate virtualenv with Python 3:
+- Create and activate virtualenv with Python 3.6+:
 
 ```sh
 virtualenv .venv
