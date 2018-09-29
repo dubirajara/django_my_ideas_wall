@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/sh
 psql -U postgres -c "CREATE USER postgresuser PASSWORD 'postgrespass'"
 psql -U postgres -c "ALTER USER postgresuser WITH SUPERUSER"
 psql -U postgres -c "CREATE DATABASE ideasdb OWNER postgresuser"

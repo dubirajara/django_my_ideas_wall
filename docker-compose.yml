@@ -13,7 +13,7 @@ services:
   web:
     restart: always
     build: .
-    command: bash -c "python contrib/config_env.py && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py test && /code/contrib/start.sh"
+    command: sh -c "python contrib/config_env.py && python manage.py migrate && python manage.py initsuperadmin && python manage.py collectstatic --noinput && python manage.py test && /code/contrib/start.sh"
     volumes:
       - .:/code
     ports:
