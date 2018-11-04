@@ -15,7 +15,7 @@ before_script:
   - python manage.py migrate
   - python manage.py collectstatic --no-input
 script:
-  - coverage run --source='myideas' manage.py test
+  - pytest myideas --cov=myideas
   - flake8
 before_install:
   - pip install coveralls
