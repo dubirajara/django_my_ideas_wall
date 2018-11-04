@@ -36,5 +36,5 @@ class RegisterIdea(TestCase):
 
     def test_registration_get(self):
         resp = self.client.get(r('registration_register'))
-        self.failUnless(isinstance(resp.context['form'],
+        self.assertTrue(isinstance(resp.context['form'],
                                    RegistrationForm))
