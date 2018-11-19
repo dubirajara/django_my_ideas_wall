@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block title %}Ideas Form{% endblock title %}
+{% block title %}Ideas Form Create{% endblock title %}
 {% block content %}
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-3' style="padding-top:100px">
-    {% if user.is_authenticated %}
 <h3 style="text-align: center;">Share your idea!</h3><br>
 
 <form method='post' action=".">
@@ -13,12 +12,7 @@
 
   <input class='btn btn-block btn-primary' type="submit" value="Share" />
 </form>
-    {% else %}
 
-        <p align="center" class='text-align-center lead' style="padding-top:80px">To share your idea you have to be logged in.</p>
-        <p class='text-align-center' align="center"><a href="{% url 'auth_login' %}"><b>Login</b></a></p>
-
-    {% endif %}
 </div>
 </div>
 {{ form.media }}

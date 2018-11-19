@@ -80,11 +80,11 @@ class HomeTest(TestCase):
         self.assertContains(self.response, self.idea.tags)
 
     def test_update(self):
-        """edit ideas without login must return code 403"""
+        """edit ideas without login must return code 302"""
         response = self.client.get(r('update', self.idea.slug))
-        self.assertEqual(403, response.status_code)
+        self.assertEqual(302, response.status_code)
 
     def test_delete(self):
-        """delete ideas without login must return code 403"""
+        """delete ideas without login must return code 302"""
         response = self.client.get(r('delete', self.idea.slug))
-        self.assertEqual(403, response.status_code)
+        self.assertEqual(302, response.status_code)

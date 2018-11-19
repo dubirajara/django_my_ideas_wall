@@ -1,4 +1,5 @@
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -32,6 +33,7 @@ def idea_details(request, slug):
     return render(request, 'ideas_details.html', context)
 
 
+@login_required
 def idea_create(request):
     form = IdeasForm(request.POST)
     if form.is_valid():
@@ -52,6 +54,7 @@ def idea_create(request):
     return render(request, 'idea_form.html', context)
 
 
+@login_required
 def idea_update(request, slug=None):
     instance = get_object_or_404(Idea, slug=slug)
     form = IdeasFormUpdate(request.POST or None, instance=instance)
@@ -69,6 +72,7 @@ def idea_update(request, slug=None):
     return render(request, 'update.html', context)
 
 
+@login_required
 def idea_delete(request, slug=None):
     instance = get_object_or_404(Idea, slug=slug)
     if request.user == instance.user:
