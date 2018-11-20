@@ -10,7 +10,7 @@ from rest_framework import authentication, permissions
 from registration.forms import User
 
 from .models import Idea
-from .forms import IdeasForm, IdeasFormUpdate
+from .forms import IdeasForm
 from .mixins import LikeIdeasMixin
 
 
@@ -57,7 +57,7 @@ def idea_create(request):
 @login_required
 def idea_update(request, slug=None):
     instance = get_object_or_404(Idea, slug=slug)
-    form = IdeasFormUpdate(request.POST or None, instance=instance)
+    form = IdeasForm(request.POST or None, instance=instance)
     if request.user == instance.user:
         if form.is_valid():
             form.save()

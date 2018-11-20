@@ -13,11 +13,5 @@ class IdeasForm(forms.ModelForm):
         fields = ('title', 'description', 'tags')
 
 
-class IdeasFormUpdate(forms.ModelForm):
-    class Meta:
-        model = Idea
-        fields = ('title', 'description', 'tags')
-
-
 class CustomForm(RegistrationForm):
     captcha = ReCaptchaField()
