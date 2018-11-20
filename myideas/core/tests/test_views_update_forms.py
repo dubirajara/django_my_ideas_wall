@@ -3,6 +3,7 @@ from django.test.client import Client
 from django.shortcuts import resolve_url as r
 from django.contrib.auth.models import User
 
+from myideas.core.forms import IdeasForm
 from myideas.core.models import Idea
 
 
@@ -39,6 +40,10 @@ class IdeaUpdateform(TestCase):
         """'ideas Update' must use template update.html and base.html"""
         self.assertTemplateUsed(self.response, 'update.html')
         self.assertTemplateUsed(self.response, 'base.html')
+
+    def test_has_form_on_context(self):
+        """'ideas Update form' must be on context"""
+        self.assertIsInstance(self.response.context['form'], IdeasForm)
 
     def test_redirect(self):
         """'Update Form post must be redirect to details"""

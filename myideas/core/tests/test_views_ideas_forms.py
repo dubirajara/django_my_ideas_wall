@@ -41,6 +41,7 @@ class IdeaFormTestLogin(TestCase):
         self.assertTemplateUsed(self.response, 'base.html')
 
     def test_has_form_on_context(self):
+        """'ideas form form' must be on context"""
         self.assertIsInstance(self.response.context['form'], IdeasForm)
 
     def test_csrf(self):
