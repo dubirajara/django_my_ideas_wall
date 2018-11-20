@@ -7,13 +7,6 @@ from myideas.core.models import Idea
 from myideas.core.forms import IdeasForm
 
 
-class IdeaFormTest(TestCase):
-    def test_get_login_required(self):
-        """GET 'Ideas Form' must return status code 302"""
-        self.response = self.client.get(r('ideas_form'))
-        self.assertEqual(302, self.response.status_code)
-
-
 class IdeaFormTestLogin(TestCase):
     def setUp(self):
         self.client = Client()
@@ -49,3 +42,13 @@ class IdeaFormTestLogin(TestCase):
 
     def test_has_form_on_context(self):
         self.assertIsInstance(self.response.context['form'], IdeasForm)
+
+    def test_csrf(self):
+        """HTML must contain csrf"""
+        self.assertContains(self.response, 'csrfmiddlewaretoken')
+
+    def test_get_login_required(self):
+        """GET 'Ideas Form' must return status code 302"""
+        self.client.logout()
+        response = self.client.get(r('ideas_form'))
+        self.assertEqual(302, response.status_code)

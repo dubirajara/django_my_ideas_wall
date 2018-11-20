@@ -47,3 +47,9 @@ class IdeaUpdateform(TestCase):
         idea = Idea.objects.get()
         self.assertEqual(302, resp_post.status_code)
         self.assertRedirects(resp_post, r(idea.get_absolute_url()))
+
+    def test_get_login_required(self):
+        """GET 'Ideas Update Form' must return status code 302"""
+        self.client.logout()
+        response = self.client.get(r('update', self.idea.slug))
+        self.assertEqual(302, response.status_code)
