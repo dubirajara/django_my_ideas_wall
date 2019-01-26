@@ -43,8 +43,8 @@ class LoginRegisterform(TestCase):
     def test_html_login(self):
         response = self.client.get(r('auth_login'))
         contents = (
-            'href="/oauthlogin/facebook/"',
-            'href="/oauthlogin/twitter/"',
+            'href="/oauth/login/facebook/"',
+            'href="/oauth/login/twitter/"',
             '<input type="text" name="username"',
             '<input type="password" name="password"',
             'href="/accounts/password/reset/"',
@@ -58,8 +58,8 @@ class LoginRegisterform(TestCase):
     def test_html_register(self):
         response = self.client.get(r('registration_register'))
         contents = (
-            'href="/oauthlogin/facebook/"',
-            'href="/oauthlogin/twitter/"',
+            'href="/oauth/login/facebook/"',
+            'href="/oauth/login/twitter/"',
             '<input type="text" name="username"',
             '<input type="email" name="email"',
             '<input type="password" name="password1"',

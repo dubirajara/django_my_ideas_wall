@@ -23,7 +23,7 @@ urlpatterns = [
     path('ideassecretadmin/', admin.site.urls),
     path('', views.home, name='home'),
     path('accounts/', include('registration.backends.default.urls')),
-    path('oauth', include('social_django.urls', namespace='social')),
+    path('oauth/', include('social_django.urls', namespace='social')),
 ]
 
 admin.site.site_header = 'Ideas Webapp Admin'
