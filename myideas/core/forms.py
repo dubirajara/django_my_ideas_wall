@@ -1,6 +1,7 @@
 from django import forms
 
 from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Invisible
 from registration.forms import RegistrationForm
 
 
@@ -14,4 +15,4 @@ class IdeasForm(forms.ModelForm):
 
 
 class CustomForm(RegistrationForm):
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(widget=ReCaptchaV2Invisible)

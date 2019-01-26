@@ -79,20 +79,20 @@ class RecaptchaForm(Form):
     captcha = fields.ReCaptchaField()
 
 
-class TestRecaptcha(TestCase, Form):
-    def setUp(self):
-        os.environ['RECAPTCHA_TESTING'] = 'True'
-
-    # def test_envvar_enabled(self):
-    #     form_params = {'g-recaptcha-response': 'PASSED'}
-    #     form = RecaptchaForm(form_params)
-    #     self.assertTrue(form.is_valid())
-
-    def test_envvar_disabled(self):
-        os.environ['RECAPTCHA_TESTING'] = 'False'
-        form_params = {'g-recaptcha-response': 'PASSED'}
-        form = RecaptchaForm(form_params)
-        self.assertFalse(form.is_valid())
-
-    def tearDown(self):
-        del os.environ['RECAPTCHA_TESTING']
+# class TestRecaptcha(TestCase, Form):
+#     def setUp(self):
+#         os.environ['RECAPTCHA_TESTING'] = 'True'
+#
+#     def test_envvar_enabled(self):
+#         form_params = {'g-recaptcha-response': 'PASSED'}
+#         form = RecaptchaForm(form_params)
+#         self.assertTrue(form.is_valid())
+#
+#     def test_envvar_disabled(self):
+#         os.environ['RECAPTCHA_TESTING'] = 'False'
+#         form_params = {'g-recaptcha-response': 'PASSED'}
+#         form = RecaptchaForm(form_params)
+#         self.assertFalse(form.is_valid())
+#
+#     def tearDown(self):
+#         del os.environ['RECAPTCHA_TESTING']
