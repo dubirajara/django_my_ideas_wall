@@ -1,6 +1,6 @@
 Hello {{ user.username }}!
 
-Activate account at {{ site.name }}.
+Activate account at {{ site.domain }}.
 
 Click the link below to activate your account:
 
