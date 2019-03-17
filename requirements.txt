@@ -5,7 +5,7 @@ django-crispy-forms==1.7.2
 django-recaptcha==2.0.2
 django-registration-redux==2.5
 Django==2.1.7
-djangorestframework==3.9.1
+djangorestframework==3.9.2
 gunicorn==19.9.0
 psycopg2-binary==2.7.7
 python-decouple==3.1
