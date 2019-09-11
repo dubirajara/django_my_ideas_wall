@@ -1,9 +1,9 @@
--e git://github.com/dubirajara/django-tagulous#egg=django_tagulous
 dj-config-url==0.1.1
 dj-database-url==0.5.0
 django-crispy-forms==1.7.2
 django-recaptcha==2.0.5
 django-registration-redux==2.6
+django-tagulous==0.14.1
 Django==2.2.5
 djangorestframework==3.10.3
 gunicorn==19.9.0
