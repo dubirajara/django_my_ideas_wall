@@ -4,7 +4,7 @@ django-crispy-forms==1.7.2
 django-recaptcha==2.0.5
 django-registration-redux==2.6
 django-tagulous==0.14.1
-Django==2.2.5
+Django==2.2.6
 djangorestframework==3.10.3
 gunicorn==19.9.0
 psycopg2-binary==2.8.3
