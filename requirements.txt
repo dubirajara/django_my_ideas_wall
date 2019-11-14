@@ -8,6 +8,6 @@ Django==2.2.7
 djangorestframework==3.10.3
 gunicorn==19.9.0
 psycopg2-binary==2.8.4
-python-decouple==3.1
+python-decouple==3.3
 social-auth-app-django==3.1.0
 whitenoise==4.1.4
