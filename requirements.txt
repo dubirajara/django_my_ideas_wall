@@ -1,9 +1,9 @@
 -e git+https://github.com/dubirajara/django-tagulous.git@master#egg=django_tagulous-django3.0
+-e git+https://github.com/perceptiveminds/django-registration#egg=django-registration-django3.0
+-e git+https://github.com/dubirajara/django-recaptcha.git@develop#egg=django-recaptcha-django3.0
 dj-config-url==0.1.1
 dj-database-url==0.5.0
 django-crispy-forms==1.8.1
-django-recaptcha==2.0.5
-django-registration-redux==2.6
 Django==3.0
 djangorestframework==3.11.0
 gunicorn==20.0.4
