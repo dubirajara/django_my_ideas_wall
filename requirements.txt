@@ -7,7 +7,7 @@ django-crispy-forms==1.9.0
 Django==3.0.4
 djangorestframework==3.11.0
 gunicorn==20.0.4
-psycopg2-binary==2.8.4
+psycopg2-binary==2.8.5
 python-decouple==3.3
 social-auth-app-django==3.1.0
 whitenoise==5.0.1
