@@ -1,2 +1,3 @@
 myideas/core/static/* linguist-vendored
 myideas/core/templates/* linguist-vendored
+*.css linguist-vendored
